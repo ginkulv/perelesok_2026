@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://bq6pp3yg2pf2q"]
+
+[ext_resource type="Script" uid="uid://br5t2ogu2py56" path="res://scripts/ui/settings_menu.gd" id="1_qwcqe"]
+[ext_resource type="Theme" uid="uid://dtiv81upl2jvn" path="res://assets/ui_theme.theme" id="3_0b1cv"]
+[ext_resource type="FontFile" uid="uid://dgo3t53sw2gy2" path="res://assets/fonts/Junicode.ttf" id="4_0b1cv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3vyp"]
+bg_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mishw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7pacj"]
+font = ExtResource("4_0b1cv")
+font_size = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iii5b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6v77"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxswo"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ngbvi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngbvi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h271e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7dpwb"]
+
+[node name="Settings" type="Node2D" unique_id=336868434]
+script = ExtResource("1_qwcqe")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1497344680]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=259986816]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.08235294, 0.23529412, 0.3372549, 0)
+
+[node name="SettingsPanel" type="Panel" parent="CanvasLayer" unique_id=1545920698]
+process_mode = 3
+anchors_preset = -1
+offset_left = 522.0
+offset_top = 211.0
+offset_right = 1464.0
+offset_bottom = 753.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x3vyp")
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" type="Button" parent="CanvasLayer/SettingsPanel" unique_id=1616493547]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28800002
+anchor_top = 0.80700004
+anchor_right = 0.28800002
+anchor_bottom = 0.80700004
+offset_left = 67.70395
+offset_top = -97.39401
+offset_right = 311.70398
+offset_bottom = -12.394012
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mishw")
+text = "BACK"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SettingsPanel" unique_id=717480884]
+layout_mode = 1
+offset_left = 73.0
+offset_top = 122.0
+offset_right = 779.0
+offset_bottom = 288.0
+theme_override_constants/separation = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SettingsPanel/VBoxContainer" unique_id=1520485223]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer" unique_id=632650567]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("3_0b1cv")
+text = "SFX"
+label_settings = SubResource("LabelSettings_7pacj")
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer" unique_id=1899728067]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxEmpty_iii5b")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_r6v77")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_pxswo")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/SettingsPanel/VBoxContainer" unique_id=341906632]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer2" unique_id=1139506735]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("3_0b1cv")
+text = "Music"
+label_settings = SubResource("LabelSettings_7pacj")
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer2" unique_id=2135023683]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_icons/tick = SubResource("ImageTexture_ngbvi")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_ngbvi")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_h271e")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_7dpwb")
+
+[connection signal="button_up" from="CanvasLayer/SettingsPanel/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="value_changed" from="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]

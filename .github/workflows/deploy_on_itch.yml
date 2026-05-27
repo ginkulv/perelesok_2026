@@ -1,0 +1,48 @@
+name: itch-deploy
+
+on: push
+
+env:
+  WORKING_DIRECTORY: .
+  CREATE_EXPORTS: 'false'
+  GODOT_VERSION: '4.5'
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Create export directory
+        run: mkdir ../html5
+
+      - name: Godot HTML5 export
+        uses: dulvui/godot-4-html-export@v1.0.2
+        with:
+          working-directory: $WORKING_DIRECTORY
+          godot-version: 4.5
+          godot-channel: stable
+
+      - name: Cache butler files
+        id: cache-butler
+        uses: actions/cache@v3
+        with:
+          path: butler
+          key: ${{ runner.os }}-butler
+  
+      - name: Download butler https://itch.io/docs/butler/installing.html
+        if: steps.cache-butler.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          curl -L -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          chmod +x butler
+          ./butler -V
+  
+      - name: Upload to itchio
+        shell: bash
+        env: 
+          BUTLER_API_KEY: ${{ secrets.ITCH_API_KEY }}
+        run: ./butler push ../html5 ${{ secrets.USERNAME }}/${{ secrets.GAMENAME }}:html5
