@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var settings_scene = preload("res://scenes/ui/settings_menu.tscn")
+@onready var settings_scene = preload("res://ui/settings_menu/settings_menu.tscn")
 
 func _on_resume_button_button_up() -> void:
     GameState.change_state(GameState.PLAYING)

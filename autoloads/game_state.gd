@@ -1,6 +1,6 @@
 extends Node
 
-@onready var pause_menu_scene = preload("res://scenes/ui/pause_menu.tscn")
+@onready var pause_menu_scene = preload("res://ui/pause_menu/pause_menu.tscn")
 
 enum {
     MAIN_MENU,

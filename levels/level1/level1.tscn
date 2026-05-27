@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bh2ynhubnrpkc"]
+
+[ext_resource type="PackedScene" uid="uid://dkxeenjaro2wd" path="res://levels/level1/props/jigsaw_fragment/jigsaw_fragment.tscn" id="1_eq150"]
+
+[node name="Level1" type="Node2D" unique_id=1251460109]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1416269901]
+process_mode = 3
+layer = 0
+
+[node name="JigsawFragment2" parent="CanvasLayer" unique_id=1390962387 instance=ExtResource("1_eq150")]
+position = Vector2(174, 158)
+
+[node name="JigsawFragment" parent="CanvasLayer" unique_id=1428799320 instance=ExtResource("1_eq150")]
+z_index = 1
+position = Vector2(466, 157)
+priority = 1

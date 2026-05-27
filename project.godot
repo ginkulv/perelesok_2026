@@ -20,9 +20,10 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
-GameState="*res://scripts/autoloads/game_state.gd"
-AudioManager="*res://scripts/autoloads/audio_manager.gd"
-MessageManager="*res://scripts/autoloads/message_manager.gd"
+GameState="*res://autoloads/game_state.gd"
+AudioManager="*res://autoloads/audio_manager.gd"
+MessageManager="*res://autoloads/message_manager.gd"
+DebugManager="*uid://cr05vtcnkn1ry"
 
 [display]
 

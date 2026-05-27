@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://btt1apirlk52v"]
+
+[node name="Level5" type="Node2D" unique_id=1251460109]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1416269901]
+process_mode = 3
+layer = 0
