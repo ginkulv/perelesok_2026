@@ -1,0 +1,11 @@
+extends Area2D
+class_name DraggableItem
+
+signal drag_started(item: DraggableItem, pos: Vector2)
+signal drag_ended(item: DraggableItem, pos: Vector2)
+
+func _ready() -> void:
+    add_to_group("draggable_item")
+
+func update_drag_position(new_position: Vector2) -> void:
+    self.global_position = new_position
