@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://btt1apirlk52v"]
 
+[ext_resource type="Script" uid="uid://d26cccxc4rmk0" path="res://levels/level5/level5.gd" id="1_nqeor"]
+
 [node name="Level5" type="Node2D" unique_id=1251460109]
+script = ExtResource("1_nqeor")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1416269901]
 process_mode = 3

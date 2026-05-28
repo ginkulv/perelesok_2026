@@ -9,7 +9,6 @@ func _ready() -> void:
     for i in range(1, num_of_levels + 1):
         levels.append("level" + str(i))
 
-    print(levels)
     index = 0
     $Panel/Label.text = levels[index]
     $Panel/PrevButton.visible = false

@@ -28,10 +28,10 @@ font_size = 40
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7dpwb"]
 
 [node name="Settings" type="Node2D" unique_id=336868434]
+z_index = 1
 script = ExtResource("1_qwcqe")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1497344680]
-layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=259986816]
 custom_minimum_size = Vector2(1920, 1080)
@@ -49,7 +49,7 @@ offset_bottom = 753.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_x3vyp")
 metadata/_edit_use_anchors_ = true
 
-[node name="BackButton" type="Button" parent="CanvasLayer/SettingsPanel" unique_id=1616493547]
+[node name="BackButton" type="Button" parent="CanvasLayer/SettingsPanel" unique_id=1616493547 groups=["ui_elements"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.28800002
@@ -60,6 +60,7 @@ offset_left = 67.70395
 offset_top = -97.39401
 offset_right = 311.70398
 offset_bottom = -12.394012
+mouse_filter = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mishw")
 text = "BACK"
 
@@ -82,7 +83,7 @@ text = "SFX"
 label_settings = SubResource("LabelSettings_7pacj")
 horizontal_alignment = 1
 
-[node name="SFXSlider" type="HSlider" parent="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer" unique_id=1899728067]
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer" unique_id=1899728067 groups=["ui_elements"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -101,7 +102,7 @@ text = "Music"
 label_settings = SubResource("LabelSettings_7pacj")
 horizontal_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer2" unique_id=2135023683]
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer2" unique_id=2135023683 groups=["ui_elements"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1

@@ -24,6 +24,7 @@ GameState="*res://autoloads/game_state.gd"
 AudioManager="*res://autoloads/audio_manager.gd"
 MessageManager="*res://autoloads/message_manager.gd"
 DebugManager="*uid://cr05vtcnkn1ry"
+CursorManager="*uid://b0plkurfu24hn"
 
 [display]
 
@@ -39,9 +40,7 @@ movie_writer/disable_vsync=true
 
 [global_group]
 
-portals=""
-player=""
-snow=""
+ui_elements=""
 
 [input]
 

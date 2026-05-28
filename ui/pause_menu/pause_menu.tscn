@@ -6,14 +6,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_8wfqe"]
 font_size = 90
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coo1x"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jkta"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ht4ye"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7yca1"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrbnh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qnem"]
@@ -30,18 +22,24 @@ font_size = 90
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0q18a"]
 
-[node name="PauseMenu" type="Node2D" unique_id=1381225576]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coo1x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jkta"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ht4ye"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7yca1"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1576040903]
 script = ExtResource("1_6tw0m")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=640255786]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1914947326]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1914947326]
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.46666667, 0.3019608, 0.24705882, 0.6)
 
-[node name="MenuLabel" type="Label" parent="CanvasLayer" unique_id=1304282038]
+[node name="MenuLabel" type="Label" parent="." unique_id=1304282038]
 offset_left = 828.0
 offset_top = 154.0
 offset_right = 1123.0
@@ -50,36 +48,18 @@ theme = ExtResource("3_4inpj")
 text = "PAUSE"
 label_settings = SubResource("LabelSettings_8wfqe")
 
-[node name="ResumeButton" type="Button" parent="CanvasLayer" unique_id=641200295]
-offset_left = 774.0
-offset_top = 301.0
-offset_right = 1153.0
-offset_bottom = 437.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_coo1x")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_2jkta")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ht4ye")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7yca1")
-
-[node name="Label" type="Label" parent="CanvasLayer/ResumeButton" unique_id=1572831551]
-layout_mode = 0
-offset_left = 134.0
-offset_top = 35.0
-offset_right = 234.0
-offset_bottom = 94.0
-theme = ExtResource("3_4inpj")
-text = "PLAY"
-
-[node name="SettingsButton" type="Button" parent="CanvasLayer" unique_id=585746432]
+[node name="SettingsButton" type="Button" parent="." unique_id=585746432 groups=["ui_elements"]]
 offset_left = 776.0
 offset_top = 466.0
 offset_right = 1163.0
 offset_bottom = 595.0
+mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lrbnh")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_6qnem")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ynwdf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p4b6u")
 
-[node name="Label" type="Label" parent="CanvasLayer/SettingsButton" unique_id=13020655]
+[node name="Label" type="Label" parent="SettingsButton" unique_id=13020655]
 layout_mode = 0
 offset_left = 107.0
 offset_top = 41.0
@@ -88,17 +68,18 @@ offset_bottom = 100.0
 theme = ExtResource("3_4inpj")
 text = "SETTINGS"
 
-[node name="ExitButton" type="Button" parent="CanvasLayer" unique_id=37115962]
+[node name="ExitButton" type="Button" parent="." unique_id=37115962 groups=["ui_elements"]]
 offset_left = 786.0
 offset_top = 635.0
 offset_right = 1165.0
 offset_bottom = 763.0
+mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3fvc3")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_kk5q1")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ukr1j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0q18a")
 
-[node name="Label" type="Label" parent="CanvasLayer/ExitButton" unique_id=1274252046]
+[node name="Label" type="Label" parent="ExitButton" unique_id=1274252046]
 layout_mode = 0
 offset_left = 133.0
 offset_top = 38.0
@@ -107,6 +88,26 @@ offset_bottom = 97.0
 theme = ExtResource("3_4inpj")
 text = "EXIT"
 
-[connection signal="button_up" from="CanvasLayer/ResumeButton" to="." method="_on_resume_button_button_up"]
-[connection signal="button_up" from="CanvasLayer/SettingsButton" to="." method="_on_settings_button_button_up"]
-[connection signal="button_up" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_up"]
+[node name="ResumeButton" type="Button" parent="." unique_id=641200295 groups=["ui_elements"]]
+offset_left = 774.0
+offset_top = 301.0
+offset_right = 1153.0
+offset_bottom = 437.0
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_coo1x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2jkta")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ht4ye")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7yca1")
+
+[node name="Label" type="Label" parent="ResumeButton" unique_id=1572831551]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 35.0
+offset_right = 234.0
+offset_bottom = 94.0
+theme = ExtResource("3_4inpj")
+text = "PLAY"
+
+[connection signal="button_up" from="SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="button_up" from="ExitButton" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="ResumeButton" to="." method="_on_resume_button_button_up"]

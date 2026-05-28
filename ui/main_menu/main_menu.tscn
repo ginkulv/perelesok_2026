@@ -57,11 +57,12 @@ theme = ExtResource("3_1g8jr")
 text = "NAZVANIE"
 label_settings = SubResource("LabelSettings_yqeox")
 
-[node name="PlayButton" type="Button" parent="CanvasLayer" unique_id=2104974423]
+[node name="PlayButton" type="Button" parent="CanvasLayer" unique_id=2104974423 groups=["ui_elements"]]
 offset_left = 764.0
 offset_top = 379.0
 offset_right = 1150.0
 offset_bottom = 545.0
+mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_fe2o3")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_y2j7i")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fe2o3")
@@ -76,11 +77,12 @@ offset_bottom = 111.0
 theme = ExtResource("3_1g8jr")
 text = "PLAY"
 
-[node name="SettingsButton" type="Button" parent="CanvasLayer" unique_id=1244672703]
+[node name="SettingsButton" type="Button" parent="CanvasLayer" unique_id=1244672703 groups=["ui_elements"]]
 offset_left = 774.0
 offset_top = 540.0
 offset_right = 1153.0
 offset_bottom = 684.0
+mouse_filter = 2
 theme = ExtResource("3_1g8jr")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_uhagc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_y1h5l")
@@ -96,11 +98,12 @@ offset_bottom = 104.0
 theme = ExtResource("3_1g8jr")
 text = "SETTINGS"
 
-[node name="CreditsButton" type="Button" parent="CanvasLayer" unique_id=1765223703]
+[node name="CreditsButton" type="Button" parent="CanvasLayer" unique_id=1765223703 groups=["ui_elements"]]
 offset_left = 775.0
 offset_top = 693.0
 offset_right = 1154.0
 offset_bottom = 839.0
+mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_btxxm")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_pw24t")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wb0q5")
@@ -116,11 +119,12 @@ offset_bottom = 137.0
 theme = ExtResource("3_1g8jr")
 text = "CREDITS"
 
-[node name="ExitButton" type="Button" parent="CanvasLayer" unique_id=225283963]
+[node name="ExitButton" type="Button" parent="CanvasLayer" unique_id=225283963 groups=["ui_elements"]]
 offset_left = 773.0
 offset_top = 840.0
 offset_right = 1152.0
 offset_bottom = 975.0
+mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n4uci")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_5dct7")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_877pj")
