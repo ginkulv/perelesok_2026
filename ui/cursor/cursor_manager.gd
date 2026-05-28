@@ -50,13 +50,13 @@ func _input(event: InputEvent) -> void:
 
     if event is InputEventMouseButton and event.pressed:
         var fake_click = event.duplicate()
-        var cursor_pos_top_right = cursor_pos #+ cursor_offset
+        var cursor_pos_top_right = cursor_pos
         fake_click.global_position = cursor_pos_top_right
         fake_click.position = cursor_pos_top_right
 
         var ui_element = _get_ui_element_at_position(cursor_pos)
         if ui_element:
-            if ui_element is Button:
+            if ui_element is Button and ui_element.is_visible_in_tree():
                 print("UI element clicked: " + ui_element.to_string())
                 ui_element.button_up.emit()
                 return
