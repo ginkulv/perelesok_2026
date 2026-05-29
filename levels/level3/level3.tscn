@@ -1,7 +1,48 @@
-[gd_scene format=3 uid="uid://dajpwvnuabm3v"]
+[gd_scene format=3 uid="uid://vm0tftkbv338"]
+
+[ext_resource type="Script" uid="uid://bilpol4s648qv" path="res://levels/level3/level3.gd" id="1_ptmi2"]
+[ext_resource type="Texture2D" uid="uid://clujxcqvui5iw" path="res://levels/level3/placeholder.jpg" id="2_xb5ex"]
+[ext_resource type="Script" uid="uid://cm82by35xjxr6" path="res://abstract/rotatable_area2d.gd" id="3_xb5ex"]
+[ext_resource type="PackedScene" uid="uid://bp85hk3on4it2" path="res://levels/level2/level2.tscn" id="4_nkbmv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i48ro"]
+size = Vector2(121, 118)
 
 [node name="Level3" type="Node2D" unique_id=1251460109]
+script = ExtResource("1_ptmi2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1416269901]
-process_mode = 3
-layer = 0
+[node name="RoomSprite" type="Sprite2D" parent="." unique_id=590949535]
+position = Vector2(901, 540)
+texture = ExtResource("2_xb5ex")
+
+[node name="Knob1" type="Area2D" parent="." unique_id=251724281]
+position = Vector2(994, 924)
+script = ExtResource("3_xb5ex")
+metadata/_custom_type_script = "uid://cm82by35xjxr6"
+
+[node name="Sprite2D" type="Sprite2D" parent="Knob1" unique_id=329483272]
+position = Vector2(-0.025011063, -0.040073395)
+scale = Vector2(0.13444434, 0.23591551)
+texture = ExtResource("2_xb5ex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knob1" unique_id=695678582]
+position = Vector2(-0.025011063, 0.061452866)
+shape = SubResource("RectangleShape2D_i48ro")
+
+[node name="Knob2" type="Area2D" parent="." unique_id=883263605]
+position = Vector2(833, 922)
+script = ExtResource("3_xb5ex")
+metadata/_custom_type_script = "uid://cm82by35xjxr6"
+
+[node name="Sprite2D" type="Sprite2D" parent="Knob2" unique_id=1241969131]
+position = Vector2(-0.36450195, 1.9736633)
+scale = Vector2(0.13444434, 0.23591551)
+texture = ExtResource("2_xb5ex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knob2" unique_id=310719087]
+position = Vector2(-0.2727356, 1.8181763)
+shape = SubResource("RectangleShape2D_i48ro")
+
+[node name="Level2" parent="." unique_id=1115832160 instance=ExtResource("4_nkbmv")]
+position = Vector2(1542, 120.99999)
+scale = Vector2(0.1, 0.1)

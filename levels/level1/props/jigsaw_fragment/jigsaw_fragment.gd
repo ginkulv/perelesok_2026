@@ -18,7 +18,7 @@ func _input_event(viewport, event, shape_idx):
         print(dragged_item)
         if event.pressed and dragged_item == null:
             dragged_item = self
-            drag_offset = global_position - get_global_mouse_position()
+            drag_offset = position - get_local_mouse_position()
             is_dragging = true
         else:
             dragged_item = null
@@ -27,4 +27,4 @@ func _input_event(viewport, event, shape_idx):
 
 func _process(delta: float) -> void:
     if is_dragging:
-        global_position = get_global_mouse_position() + drag_offset
+        position = get_global_mouse_position() + drag_offset

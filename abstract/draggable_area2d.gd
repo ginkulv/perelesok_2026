@@ -8,4 +8,4 @@ func _ready() -> void:
     add_to_group("draggable_item")
 
 func update_drag_position(new_pos: Vector2) -> void:
-    self.global_position = new_pos
+    self.position = new_pos

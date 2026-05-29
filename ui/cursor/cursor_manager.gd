@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
     if is_dragging and dragged_item:
         dragged_item.update_drag_position(cursor_pos + drag_offset)
     elif is_rotating and rotated_item:
-        drag_offset = rotated_item.global_position - cursor_pos
+        drag_offset = rotated_item.position - cursor_pos
         rotated_item.update_rotation(drag_offset)
 
 func _input(event: InputEvent) -> void:
@@ -78,6 +78,7 @@ func _input(event: InputEvent) -> void:
         cursor_pos.y += movement.y * sensitivity
         var screen_size = get_viewport().get_visible_rect().size
         cursor_pos = cursor_pos.clamp(Vector2.ZERO, screen_size)
+        cursor_pos = cursor_pos * get_viewport().canvas_transform.affine_inverse() 
         cursor_sprite.position = cursor_pos
 
     if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -108,7 +109,7 @@ func _input(event: InputEvent) -> void:
 func _start_drag() -> void:
     print("start drag " + str(cursor_pos) + ", " + top_piece.to_string())
     dragged_item = top_piece
-    drag_offset = dragged_item.global_position - cursor_pos
+    drag_offset = dragged_item.position - cursor_pos
     is_dragging = true
     dragged_item.drag_started.emit(dragged_item, cursor_pos)
 
@@ -134,7 +135,7 @@ func _end_click() -> void:
 func _start_rotate() -> void:
     print("start rotate: " + str(cursor_pos) + ", " + top_piece.to_string())
     rotated_item = top_piece
-    drag_offset = rotated_item.global_position - cursor_pos
+    drag_offset = rotated_item.position - cursor_pos
     rotation_pos = cursor_pos
     cursor_sprite.visible = false
     is_rotating = true
