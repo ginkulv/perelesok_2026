@@ -48,6 +48,19 @@ func _ready() -> void:
 
     room_sprite.material = material
 
+    $Knob1.value_changed.connect(_on_white_noise_changed)
+    $Knob2.value_changed.connect(_on_vhs_changed)
+
 
 func _process(delta: float) -> void:
     pass
+
+func _on_white_noise_changed(value: float) -> void:
+    noise_strength = value
+    noise_speed = value
+
+func _on_vhs_changed(value: float) -> void:
+    vhs_strength = value
+    jitter_amount = value
+    color_bleed = value
+    scanline_intensity = value

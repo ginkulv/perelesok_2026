@@ -17,10 +17,8 @@ func update_drag_position(new_position: Vector2) -> void:
     var dot_product = direction.normalized().dot(drag_direction.normalized())
     if abs(dot_product) > dot_product_threshold:
         var move_vector = direction.normalized() * drag_direction.length() * dot_product
-        var expected_pos = global_position + move_vector
-        var diff = expected_pos - global_position
-        if diff.length() <= move_threshold:
-            self.global_position += move_vector
-            self.global_position = self.global_position.clamp(start_pos, end_pos)
+        if move_vector.length() <= move_threshold:
+            var expected_pos = global_position + move_vector
+            self.global_position = expected_pos.clamp(start_pos, end_pos)
             if self.global_position == end_pos:
                 dragged_to_the_end.emit()

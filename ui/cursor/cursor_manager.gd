@@ -13,6 +13,8 @@ var dragged_item: DraggableArea2D = null
 var is_dragging: bool = false
 var clicked_item: ClickableArea2D = null
 var is_clicking: bool = false
+var rotated_item: RotatableArea2D = null 
+var is_rotating: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var top_piece: Area2D = null
 
@@ -56,7 +58,11 @@ func create_default_cursor_image() -> Image:
 
 func _process(delta: float) -> void:
     if is_dragging and dragged_item:
+        drag_offset = dragged_item.global_position - cursor_pos
         dragged_item.update_drag_position(cursor_pos + drag_offset)
+    elif is_rotating and rotated_item:
+        drag_offset = rotated_item.global_position - cursor_pos
+        rotated_item.update_rotation(drag_offset)
 
 func _input(event: InputEvent) -> void:
     if is_ui_mode:
@@ -76,7 +82,6 @@ func _input(event: InputEvent) -> void:
 
     if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
         if event.pressed:
-
             # TODO этот код по сути сейчас нужен только для плашки дебага, потом поиск ui можно будет убрать, осталось от прошлой версии
             var ui_element = _get_ui_element_at_position(cursor_pos)
             if ui_element and ui_element is Button:
@@ -89,12 +94,16 @@ func _input(event: InputEvent) -> void:
                 _start_drag()
             elif top_piece and top_piece is ClickableArea2D and clicked_item == null:
                 _start_click()
+            elif top_piece and top_piece is RotatableArea2D and rotated_item == null:
+                _start_rotate()
 
         elif not event.pressed:
             if is_dragging:
                 _end_drag()
             elif is_clicking:
                 _end_click()
+            elif is_rotating:
+                _end_rotate()
 
 func _start_drag() -> void:
     print("start drag " + str(cursor_pos) + ", " + top_piece.to_string())
@@ -121,6 +130,17 @@ func _end_click() -> void:
         clicked_item.item_clicked.emit()
     clicked_item = null
     is_clicking = false
+
+func _start_rotate() -> void:
+    print("start rotate: " + str(cursor_pos) + ", " + top_piece.to_string())
+    rotated_item = top_piece
+    drag_offset = rotated_item.global_position - cursor_pos
+    is_rotating = true
+
+func _end_rotate() -> void:
+    print("end rotate " + str(cursor_pos) + ", " + top_piece.to_string())
+    rotated_item = null
+    is_rotating = false
 
 func _enter_ui() -> void:
     Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
