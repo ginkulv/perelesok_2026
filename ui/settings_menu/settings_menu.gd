@@ -1,7 +1,6 @@
-extends Node
+extends CanvasLayer
 
 signal settings_closed()
-signal settings_open()
 
 func _ready() -> void:
     $CanvasLayer/SettingsPanel/VBoxContainer/HBoxContainer/SFXSlider.value = AudioManager.sfx_volume_ln

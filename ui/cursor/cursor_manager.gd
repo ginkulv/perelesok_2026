@@ -4,9 +4,9 @@ var cursor_sprite: Sprite2D
 var cursor_pos: Vector2 = Vector2.ZERO
 var cursor_offset: Vector2 = Vector2(-16, -16)
 
-var dragged_item: DraggableItem = null 
+var dragged_item: DraggableArea2D = null 
 var is_dragging: bool = false
-var clicked_item: ClickableItem = null
+var clicked_item: ClickableArea2D = null
 var is_clicking: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var top_piece: Area2D = null
@@ -58,46 +58,50 @@ func _input(event: InputEvent) -> void:
         cursor_pos = cursor_pos.clamp(Vector2.ZERO, screen_size)
         cursor_sprite.position = cursor_pos
 
-    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-        top_piece = _get_top_piece_at_position(cursor_pos)
-        if top_piece and top_piece is DraggableItem:
-            if event.pressed and dragged_item == null:
-                _start_drag()
-            elif not event.pressed and dragged_item != null:
-                _end_drag()
-        elif top_piece and top_piece is ClickableItem:
-            if event.pressed and clicked_item == null:
-                _start_click()
-            elif not event.pressed and clicked_item != null:
-                _end_click()
 
-        var ui_element = _get_ui_element_at_position(cursor_pos)
-        if event.pressed and ui_element:
-                if ui_element is Button and ui_element.is_visible_in_tree():
+    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+        if event.pressed:
+            top_piece = _get_top_piece_at_position(cursor_pos)
+            if top_piece and top_piece is DraggableArea2D and dragged_item == null:
+                _start_drag()
+            elif top_piece and top_piece is ClickableArea2D and clicked_item == null:
+                _start_click()
+            else:
+                var ui_element = _get_ui_element_at_position(cursor_pos)
+                if ui_element and ui_element is Button and ui_element.is_visible_in_tree():
                     print("UI element clicked: " + ui_element.to_string())
                     ui_element.button_up.emit()
-                    return
+
+        elif not event.pressed:
+            if is_dragging:
+                _end_drag()
+            elif is_clicking:
+                _end_click()
 
 func _start_drag() -> void:
+    print("start drag " + str(cursor_pos) + ", " + top_piece.to_string())
     dragged_item = top_piece
     drag_offset = dragged_item.global_position - cursor_pos
     is_dragging = true
     dragged_item.drag_started.emit(dragged_item, cursor_pos)
 
 func _end_drag() -> void:
+    print("end drag " + str(cursor_pos) + ", " + top_piece.to_string())
     dragged_item.drag_ended.emit(dragged_item, cursor_pos)
     dragged_item = null
     is_dragging = false
 
 func _start_click() -> void:
+    print("start click: " + str(cursor_pos) + ", " + top_piece.to_string())
     clicked_item = top_piece
     is_clicking = true
 
 func _end_click() -> void:
+    print("end click " + str(cursor_pos) + ", " + top_piece.to_string())
     var cur_top_piece = _get_top_piece_at_position(cursor_pos)
     if cur_top_piece == clicked_item:
         clicked_item.item_clicked.emit()
-        clicked_item = null
+    clicked_item = null
     is_clicking = false
 
 

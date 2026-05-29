@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://btt1apirlk52v"]
 
 [ext_resource type="Script" uid="uid://d26cccxc4rmk0" path="res://levels/level5/level5.gd" id="1_nqeor"]
+[ext_resource type="Script" uid="uid://7hgbnptmt4kw" path="res://levels/level5/props/note/note.gd" id="2_mph5u"]
 [ext_resource type="Texture2D" uid="uid://cr7j3i56f4il5" path="res://levels/level5/placeholder.jpg" id="2_p3pdj"]
-[ext_resource type="Script" uid="uid://d4ciptg8lvbkw" path="res://abstract/draggable_item.gd" id="3_hqpty"]
-[ext_resource type="Script" uid="uid://b7qr2cdibn3ep" path="res://abstract/clickable_item.gd" id="4_mph5u"]
+[ext_resource type="Script" uid="uid://b7qr2cdibn3ep" path="res://abstract/clickable_area2d.gd" id="4_mph5u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqpty"]
 size = Vector2(205, 161)
@@ -15,19 +15,21 @@ size = Vector2(902.5, 500)
 script = ExtResource("1_nqeor")
 
 [node name="NoteArea2D" type="Area2D" parent="." unique_id=1757877577]
-script = ExtResource("3_hqpty")
+position = Vector2(229, 461)
+script = ExtResource("2_mph5u")
 metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea2D" unique_id=1919684825]
-position = Vector2(472.5, 579.5)
+position = Vector2(-0.03012085, -0.34326172)
 shape = SubResource("RectangleShape2D_hqpty")
 
 [node name="Sprite2D" type="Sprite2D" parent="NoteArea2D" unique_id=1234842109]
-position = Vector2(473, 580)
+position = Vector2(-0.03012085, -0.34326172)
 scale = Vector2(0.22666667, 0.32696176)
 texture = ExtResource("2_p3pdj")
 
 [node name="CarpetArea2D" type="Area2D" parent="." unique_id=61693479]
+position = Vector2(-2, -1)
 script = ExtResource("4_mph5u")
 metadata/_custom_type_script = "uid://b7qr2cdibn3ep"
 

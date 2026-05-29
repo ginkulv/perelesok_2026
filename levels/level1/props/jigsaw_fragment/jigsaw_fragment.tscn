@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://dkxeenjaro2wd"]
 
-[ext_resource type="Script" uid="uid://fwryl4jvcfo4" path="res://levels/level1/props/jigsaw_fragment/jigsaw_fragment.gd" id="1_2rkh7"]
+[ext_resource type="Script" uid="uid://d4ciptg8lvbkw" path="res://abstract/draggable_area2d.gd" id="1_p5sda"]
 [ext_resource type="Texture2D" uid="uid://drpbre4es854m" path="res://levels/level1/placeholder.jpg" id="2_p5sda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5sda"]
 size = Vector2(256, 150)
 
-[node name="JigsawFragment" type="Area2D" unique_id=1111021578]
-script = ExtResource("1_2rkh7")
+[node name="JigsawFragment" type="Area2D" unique_id=1774292522]
+script = ExtResource("1_p5sda")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
 
 [node name="JigsawFragmentSprite" type="Sprite2D" parent="." unique_id=1007263620]
 scale = Vector2(0.28320313, 0.2981771)
