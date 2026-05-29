@@ -15,6 +15,7 @@ var clicked_item: ClickableArea2D = null
 var is_clicking: bool = false
 var rotated_item: RotatableArea2D = null 
 var is_rotating: bool = false
+var rotation_pos: Vector2 = Vector2.ZERO
 var drag_offset: Vector2 = Vector2.ZERO
 var top_piece: Area2D = null
 
@@ -58,7 +59,6 @@ func create_default_cursor_image() -> Image:
 
 func _process(delta: float) -> void:
     if is_dragging and dragged_item:
-        drag_offset = dragged_item.global_position - cursor_pos
         dragged_item.update_drag_position(cursor_pos + drag_offset)
     elif is_rotating and rotated_item:
         drag_offset = rotated_item.global_position - cursor_pos
@@ -135,11 +135,16 @@ func _start_rotate() -> void:
     print("start rotate: " + str(cursor_pos) + ", " + top_piece.to_string())
     rotated_item = top_piece
     drag_offset = rotated_item.global_position - cursor_pos
+    rotation_pos = cursor_pos
+    cursor_sprite.visible = false
     is_rotating = true
 
 func _end_rotate() -> void:
     print("end rotate " + str(cursor_pos) + ", " + top_piece.to_string())
     rotated_item = null
+    cursor_pos = rotation_pos
+    cursor_sprite.position = cursor_pos
+    cursor_sprite.visible = true
     is_rotating = false
 
 func _enter_ui() -> void:
