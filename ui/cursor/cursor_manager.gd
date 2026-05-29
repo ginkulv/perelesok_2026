@@ -124,8 +124,8 @@ func _end_click() -> void:
 
 func _enter_ui() -> void:
     Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-    cursor_sprite.visible = false
     Input.warp_mouse(cursor_pos)
+    cursor_sprite.visible = false
     is_ui_mode = true
 
 func _exit_ui() -> void:

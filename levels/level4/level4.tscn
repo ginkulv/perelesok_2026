@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://vm0tftkbv338"]
 
-[node name="Level4" type="Node2D" unique_id=1251460109]
+[ext_resource type="Script" uid="uid://bilpol4s648qv" path="res://levels/level4/level4.gd" id="1_ptmi2"]
+[ext_resource type="Texture2D" uid="uid://clujxcqvui5iw" path="res://levels/level4/placeholder.jpg" id="2_xb5ex"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1416269901]
-process_mode = 3
-layer = 0
+[node name="Level4" type="Node2D" unique_id=1251460109]
+script = ExtResource("1_ptmi2")
+
+[node name="RoomSprite" type="Sprite2D" parent="." unique_id=590949535]
+position = Vector2(901, 540)
+texture = ExtResource("2_xb5ex")
