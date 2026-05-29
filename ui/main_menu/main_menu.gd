@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 @onready var settings_scene = preload("res://ui/settings_menu/settings_menu.tscn")
 
