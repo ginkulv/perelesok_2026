@@ -44,5 +44,4 @@ position = Vector2(-0.2727356, 1.8181763)
 shape = SubResource("RectangleShape2D_i48ro")
 
 [node name="Level2" parent="." unique_id=1115832160 instance=ExtResource("4_nkbmv")]
-position = Vector2(1542, 120.99999)
 scale = Vector2(0.1, 0.1)

@@ -14,4 +14,4 @@ func _on_settings_button_button_up():
 
 func _on_play_button_button_up() -> void:
     GameState.change_state(GameState.PLAYING)
-    get_tree().change_scene_to_file("res://levels/level1/level1.tscn")
+    get_tree().change_scene_to_file("res://levels/level4/level4.tscn")

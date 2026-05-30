@@ -78,10 +78,14 @@ func _input(event: InputEvent) -> void:
         cursor_pos.y += movement.y * sensitivity
         var screen_size = get_viewport().get_visible_rect().size
         cursor_pos = cursor_pos.clamp(Vector2.ZERO, screen_size)
-        cursor_pos = cursor_pos * get_viewport().canvas_transform.affine_inverse() 
         cursor_sprite.position = cursor_pos
 
     if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+        print("---------------")
+        print("cursor_pos")
+        print(cursor_pos)
+        print("_get_world_position()")
+        print(_get_world_position())
         if event.pressed:
             # TODO этот код по сути сейчас нужен только для плашки дебага, потом поиск ui можно будет убрать, осталось от прошлой версии
             var ui_element = _get_ui_element_at_position(cursor_pos)
@@ -90,7 +94,7 @@ func _input(event: InputEvent) -> void:
                 ui_element.button_up.emit()
                 return
 
-            top_piece = _get_top_piece_at_position(cursor_pos)
+            top_piece = _get_top_piece_at_position(_get_world_position())
             if top_piece and top_piece is DraggableArea2D and dragged_item == null:
                 _start_drag()
             elif top_piece and top_piece is ClickableArea2D and clicked_item == null:
@@ -198,3 +202,16 @@ func _on_game_state_changed(_from_state: int, new_state: int) -> void:
         GameState.MAIN_MENU, GameState.PAUSE_MENU:
             print("enter_ui")
             _enter_ui()
+
+
+func _get_world_position() -> Vector2:
+    var cam = get_viewport().get_camera_2d()
+    var screen_center = get_viewport().size / 2.0
+    print("screen_center")
+    print(screen_center)
+    var cursor_offset = cursor_pos - screen_center
+    print("cursor_offset")
+    print(cursor_offset)
+    print("cam.zoom")
+    print(cam.zoom)
+    return cam.global_position + cursor_offset / cam.zoom

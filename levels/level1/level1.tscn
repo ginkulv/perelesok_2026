@@ -6,6 +6,11 @@
 [node name="Level1" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_c6lro")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1503507025]
+offset_right = 1920.0
+offset_bottom = 1088.0
+color = Color(0.7821339, 0.7313515, 0.7573506, 1)
+
 [node name="JigsawFragment2" parent="." unique_id=1390962387 instance=ExtResource("1_eq150")]
 position = Vector2(174, 158)
 

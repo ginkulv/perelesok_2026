@@ -1,9 +1,18 @@
 [gd_scene format=3 uid="uid://bp85hk3on4it2"]
 
 [ext_resource type="Texture2D" uid="uid://bornbb1mqm5ni" path="res://levels/level2/placeholder.jpg" id="1_tr3t4"]
+[ext_resource type="PackedScene" uid="uid://bh2ynhubnrpkc" path="res://levels/level1/level1.tscn" id="2_mh2fd"]
 
 [node name="Level2" type="Node2D" unique_id=1251460109]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=559802189]
+offset_right = 1920.0
+offset_bottom = 1081.0
+color = Color(0.6691236, 0.40299696, 0.2627629, 1)
 
 [node name="Placeholder" type="Sprite2D" parent="." unique_id=222608727]
 position = Vector2(877, 588)
 texture = ExtResource("1_tr3t4")
+
+[node name="Level1" parent="." unique_id=497096386 instance=ExtResource("2_mh2fd")]
+scale = Vector2(0.1, 0.1)

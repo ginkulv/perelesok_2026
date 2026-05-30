@@ -42,9 +42,5 @@ shape = SubResource("RectangleShape2D_mph5u")
 position = Vector2(1218, 516)
 texture = ExtResource("2_xb5ex")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=627520503]
-anchor_mode = 0
-
 [node name="Level3" parent="." unique_id=137414913 instance=ExtResource("5_jwckb")]
-position = Vector2(1500, 130)
 scale = Vector2(0.1, 0.1)

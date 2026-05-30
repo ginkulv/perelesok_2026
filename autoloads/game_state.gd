@@ -11,13 +11,11 @@ enum {
 
 signal state_changed(from_state: int, to_state: int)
 
-var current_state: int = MAIN_MENU
+var current_state: int = PLAYING
 var pause_menu: CanvasLayer
 
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
-    change_state(MAIN_MENU)
-
     pause_menu = pause_menu_scene.instantiate()
     add_child(pause_menu)
     pause_menu.hide()
@@ -25,6 +23,7 @@ func _ready() -> void:
 func change_state(new_state: int) -> void:
     state_changed.emit(current_state, new_state)
     current_state = new_state
+    print(new_state)
 
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("toggle_pause_menu"):

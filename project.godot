@@ -25,6 +25,7 @@ AudioManager="*res://autoloads/audio_manager.gd"
 MessageManager="*res://autoloads/message_manager.gd"
 DebugManager="*uid://cr05vtcnkn1ry"
 CursorManager="*uid://b0plkurfu24hn"
+LevelManager="*uid://dhuv66v0f31tm"
 
 [display]
 
