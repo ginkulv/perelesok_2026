@@ -6,7 +6,7 @@ func _ready() -> void:
     # CursorManager.invert_x = true
     $NoteArea2D.dragged_to_the_end.connect(_on_note_dragged_to_the_end)
     $CarpetArea2D.item_clicked.connect(_on_carpet_clicked)
-
+    
 func _exit_tree() -> void:
     CursorManager.invert_x = false
 

@@ -38,6 +38,9 @@ var material: ShaderMaterial
         scanline_intensity = value
         if material:
             material.set_shader_parameter("scanline_intensity", value)
+            
+var is_white_noise_correct: bool = false
+var is_vhs_correct: bool = false
 
 func _ready() -> void:
     var shader = preload("res://levels/level3/noise_vhs_shader.gdshader")
@@ -51,16 +54,21 @@ func _ready() -> void:
     $Knob1.value_changed.connect(_on_white_noise_changed)
     $Knob2.value_changed.connect(_on_vhs_changed)
 
-
-func _process(delta: float) -> void:
-    pass
-
-func _on_white_noise_changed(value: float) -> void:
+func _on_white_noise_changed(value: float, is_correct: bool) -> void:
     noise_strength = value
     noise_speed = value
+    
+    is_white_noise_correct = is_correct 
+    if is_white_noise_correct and is_vhs_correct:
+        print("who hoo!")
 
-func _on_vhs_changed(value: float) -> void:
+func _on_vhs_changed(value: float, is_correct: bool) -> void:
     vhs_strength = value
     jitter_amount = value
     color_bleed = value
     scanline_intensity = value
+    
+    is_vhs_correct = is_correct
+    if is_white_noise_correct and is_vhs_correct:
+        print("who hoo!")
+    

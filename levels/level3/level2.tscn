@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dajpwvnuabm3v"]
-
-[node name="Level3" type="Node2D" unique_id=1251460109]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1416269901]
-process_mode = 3
-layer = 0

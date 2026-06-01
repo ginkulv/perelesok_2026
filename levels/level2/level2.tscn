@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bp85hk3on4it2"]
 
+[ext_resource type="Script" uid="uid://dyyt7etrb47am" path="res://levels/level2/level2.gd" id="1_5x1h8"]
 [ext_resource type="Texture2D" uid="uid://bornbb1mqm5ni" path="res://levels/level2/placeholder.jpg" id="1_tr3t4"]
 [ext_resource type="PackedScene" uid="uid://bh2ynhubnrpkc" path="res://levels/level1/level1.tscn" id="2_mh2fd"]
 
 [node name="Level2" type="Node2D" unique_id=1251460109]
+script = ExtResource("1_5x1h8")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=559802189]
 offset_right = 1920.0
