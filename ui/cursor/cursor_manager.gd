@@ -95,7 +95,7 @@ func _input(event: InputEvent) -> void:
                 return
 
             top_piece = _get_top_piece_at_position(_get_world_position())
-            if top_piece and top_piece is DraggableArea2D and dragged_item == null:
+            if top_piece and top_piece is DraggableArea2D and top_piece.can_drag and dragged_item == null:
                 _start_drag()
             elif top_piece and top_piece is ClickableArea2D and clicked_item == null:
                 _start_click()

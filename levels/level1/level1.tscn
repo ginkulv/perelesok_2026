@@ -12,9 +12,9 @@ offset_bottom = 1088.0
 color = Color(0.7821339, 0.7313515, 0.7573506, 1)
 
 [node name="JigsawFragment2" parent="." unique_id=1390962387 instance=ExtResource("1_eq150")]
-position = Vector2(174, 158)
+position = Vector2(441, 340)
 
 [node name="JigsawFragment" parent="." unique_id=1428799320 instance=ExtResource("1_eq150")]
 z_index = 1
-position = Vector2(466, 157)
+position = Vector2(500, 500)
 priority = 1
