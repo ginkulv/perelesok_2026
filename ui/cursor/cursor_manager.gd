@@ -130,9 +130,9 @@ func _start_click() -> void:
 
 func _end_click() -> void:
     print("end click " + str(cursor_pos) + ", " + top_piece.to_string())
-    var cur_top_piece = _get_top_piece_at_position(cursor_pos)
+    var cur_top_piece = _get_top_piece_at_position(_get_world_position())
     if cur_top_piece == clicked_item:
-        clicked_item.item_clicked.emit()
+        clicked_item.item_clicked.emit(clicked_item, cursor_pos)
     clicked_item = null
     is_clicking = false
 
@@ -186,7 +186,7 @@ func _get_top_piece_at_position(pos: Vector2) -> Area2D:
 
     for result in results:
         var collider = result.collider 
-        if collider is Area2D:
+        if collider is Area2D and collider.is_visible_in_tree():
             if collider.z_index > highest_z:
                 highest_z = collider.z_index
                 top_piece = collider

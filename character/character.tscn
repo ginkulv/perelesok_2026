@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cm7tu3hfdfwxj"]
+
+[ext_resource type="Script" uid="uid://bpwoeafigygf8" path="res://character/character.gd" id="1_1l1n4"]
+[ext_resource type="Texture2D" uid="uid://byoferfxql3y7" path="res://character/placeholder.jpg" id="2_ugqs2"]
+[ext_resource type="Script" uid="uid://b7qr2cdibn3ep" path="res://abstract/clickable_area2d.gd" id="3_ugqs2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
+size = Vector2(136, 304)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rvpn"]
+size = Vector2(234, 90)
+
+[node name="Character" type="Node2D" unique_id=197201290]
+script = ExtResource("1_1l1n4")
+
+[node name="CharacterBody2D" type="AnimatableBody2D" parent="." unique_id=688282596]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=569048953]
+shape = SubResource("RectangleShape2D_hx151")
+
+[node name="Placeholder" type="Sprite2D" parent="CharacterBody2D" unique_id=699846871]
+scale = Vector2(0.15111111, 0.610664)
+texture = ExtResource("2_ugqs2")
+
+[node name="PlayerMessageArea2D" type="Area2D" parent="." unique_id=1464497694]
+script = ExtResource("3_ugqs2")
+metadata/_custom_type_script = "uid://b7qr2cdibn3ep"
+
+[node name="Placeholder" type="Sprite2D" parent="PlayerMessageArea2D" unique_id=1399531517]
+position = Vector2(0, -225)
+scale = Vector2(0.26, 0.17706233)
+texture = ExtResource("2_ugqs2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerMessageArea2D" unique_id=651305059]
+offset_left = -82.0
+offset_top = -256.0
+offset_right = 94.0
+offset_bottom = -198.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "test test test"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMessageArea2D" unique_id=964252358]
+position = Vector2(0, -225)
+shape = SubResource("RectangleShape2D_0rvpn")
