@@ -3,6 +3,8 @@ extends Node
 @onready var room_sprite = $RoomSprite
 var material: ShaderMaterial
 
+@export var initial_params: float = 1.0
+
 @export var noise_strength: float = 0.1:
     set(value):
         noise_strength = value
@@ -47,7 +49,12 @@ func _ready() -> void:
     material = ShaderMaterial.new()
     material.shader = shader
 
-    material.set_shader_parameter("strength", 0.15)
+    noise_strength = initial_params
+    noise_speed = initial_params
+    vhs_strength = initial_params
+    jitter_amount = initial_params
+    color_bleed = initial_params
+    scanline_intensity = initial_params
 
     room_sprite.material = material
 

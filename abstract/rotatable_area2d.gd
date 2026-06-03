@@ -4,7 +4,7 @@ class_name RotatableArea2D
 @export var min_rotation_deg: float = 0.0
 @export var max_rotation_deg: float = 180.0
 @export var max_rotation_speed: float = 3.0
-@export var deg_to_val_ratio: float = 0.1
+@export var deg_to_val_ratio: float = 0.01
 
 @export var first_threshold_deg: float = 100.0
 @export var second_threshold_deg: float = 120.0 
@@ -26,8 +26,12 @@ func update_rotation(drag_offset: Vector2) -> void:
     if rotation_degrees < first_threshold_deg:
         #value = (min_rotation_deg + rotation_degrees) / (max_rotation_deg - min_rotation_deg)
         value = (first_threshold_deg - rotation_degrees) * deg_to_val_ratio
+        print(value)
+        print(first_threshold_deg - rotation_degrees)
     elif rotation_degrees > second_threshold_deg:
         value = (rotation_degrees - second_threshold_deg) * deg_to_val_ratio
+        print(value)
+        print(rotation_degrees - second_threshold_deg)
     else:
         value = min_value # если захочется, чтобы немножко эффекта осталось, хз
     value = clamp(0.0, value, 1.0)
