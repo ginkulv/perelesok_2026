@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cs6xhyaq23gk4"
+path="res://.godot/imported/счастливый финал.mp3-b9cdc007c94c776da6e1aea6daa7ed30.mp3str"
+
+[deps]
+
+source_file="res://assets/music/счастливый финал.mp3"
+dest_files=["res://.godot/imported/счастливый финал.mp3-b9cdc007c94c776da6e1aea6daa7ed30.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

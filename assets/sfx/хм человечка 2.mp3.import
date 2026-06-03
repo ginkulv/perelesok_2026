@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ba0s6u6rtqt7f"
+path="res://.godot/imported/хм человечка 2.mp3-40bf7989826deba0cdcfadd8a3dc10a2.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/хм человечка 2.mp3"
+dest_files=["res://.godot/imported/хм человечка 2.mp3-40bf7989826deba0cdcfadd8a3dc10a2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

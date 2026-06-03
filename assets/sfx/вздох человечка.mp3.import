@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8ciq8bkqo762"
+path="res://.godot/imported/вздох человечка.mp3-fef965ffee4160c184fa68081a5a0a0a.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/вздох человечка.mp3"
+dest_files=["res://.godot/imported/вздох человечка.mp3-fef965ffee4160c184fa68081a5a0a0a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -7,7 +7,7 @@ signal drag_ended(item: DraggableArea2D, pos: Vector2)
 @export var can_drag: bool = true
 
 func _ready() -> void:
-    add_to_group("draggable_item")
+	add_to_group("draggable_item")
 
 func update_drag_position(new_pos: Vector2) -> void:
-    self.position = new_pos
+	self.position = new_pos

@@ -17,7 +17,7 @@ position = Vector2(441, 340)
 
 [node name="JigsawFragment1" parent="." unique_id=1428799320 instance=ExtResource("1_eq150")]
 z_index = 1
-position = Vector2(500, 500)
+position = Vector2(437, 489)
 priority = 1
 
 [node name="Character" parent="." unique_id=197201290 instance=ExtResource("3_ps0pm")]

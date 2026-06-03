@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0hnprbm0b8o5"
+path="res://.godot/imported/собрали фото.mp3-f09708038d7c0a3b700be71b23cebc7e.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/собрали фото.mp3"
+dest_files=["res://.godot/imported/собрали фото.mp3-f09708038d7c0a3b700be71b23cebc7e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
