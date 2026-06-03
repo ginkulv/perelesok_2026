@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" uid="uid://dyyt7etrb47am" path="res://levels/level2/level2.gd" id="1_5x1h8"]
 [ext_resource type="Texture2D" uid="uid://bornbb1mqm5ni" path="res://levels/level2/placeholder.jpg" id="1_tr3t4"]
+[ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="2_dtxg0"]
 [ext_resource type="PackedScene" uid="uid://bh2ynhubnrpkc" path="res://levels/level1/level1.tscn" id="2_mh2fd"]
 
 [node name="Level2" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_5x1h8")
 
+[node name="RoomBackground" type="Sprite2D" parent="." unique_id=2015167122]
+position = Vector2(958.99994, 603.5)
+scale = Vector2(0.75062495, 0.75062495)
+texture = ExtResource("2_dtxg0")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=559802189]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1081.0
 color = Color(0.6691236, 0.40299696, 0.2627629, 1)

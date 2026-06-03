@@ -2,15 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bd3ge5u7fddb8" path="res://levels/level1/level1.gd" id="1_c6lro"]
 [ext_resource type="PackedScene" uid="uid://dkxeenjaro2wd" path="res://levels/level1/props/jigsaw_fragment/jigsaw_fragment.tscn" id="1_eq150"]
+[ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="2_aatsp"]
 [ext_resource type="PackedScene" uid="uid://cm7tu3hfdfwxj" path="res://character/character.tscn" id="3_ps0pm"]
 
 [node name="Level1" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_c6lro")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1503507025]
-offset_right = 1920.0
-offset_bottom = 1088.0
-color = Color(0.7821339, 0.7313515, 0.7573506, 1)
+[node name="RoomBackground" type="Sprite2D" parent="." unique_id=518137724]
+position = Vector2(960.00006, 600)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_aatsp")
 
 [node name="JigsawFragment2" parent="." unique_id=1390962387 instance=ExtResource("1_eq150")]
 position = Vector2(441, 340)

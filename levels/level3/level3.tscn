@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://vm0tftkbv338"]
 
 [ext_resource type="Script" uid="uid://bilpol4s648qv" path="res://levels/level3/level3.gd" id="1_ptmi2"]
+[ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="2_fwnip"]
 [ext_resource type="Texture2D" uid="uid://clujxcqvui5iw" path="res://levels/level3/placeholder.jpg" id="2_xb5ex"]
 [ext_resource type="Script" uid="uid://cm82by35xjxr6" path="res://abstract/rotatable_area2d.gd" id="3_xb5ex"]
 [ext_resource type="PackedScene" uid="uid://bp85hk3on4it2" path="res://levels/level2/level2.tscn" id="4_nkbmv"]
@@ -10,6 +11,11 @@ size = Vector2(121, 118)
 
 [node name="Level3" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_ptmi2")
+
+[node name="RoomBackground" type="Sprite2D" parent="." unique_id=1189082140]
+position = Vector2(960.00006, 600.00006)
+scale = Vector2(0.75000006, 0.75000006)
+texture = ExtResource("2_fwnip")
 
 [node name="RoomSprite" type="Sprite2D" parent="." unique_id=590949535]
 position = Vector2(901, 540)
