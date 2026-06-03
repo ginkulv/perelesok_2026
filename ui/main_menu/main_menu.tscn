@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dwg4kahwpqddq"]
 
 [ext_resource type="Script" uid="uid://bn1dvgupxag0u" path="res://ui/main_menu/main_menu.gd" id="1_sl1te"]
+[ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="2_omy8q"]
 [ext_resource type="Theme" uid="uid://dtiv81upl2jvn" path="res://assets/ui_theme.theme" id="3_1g8jr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqeox"]
@@ -45,6 +46,20 @@ bg_color = Color(0, 0.6, 0.6, 0)
 process_mode = 3
 layer = 0
 script = ExtResource("1_sl1te")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=712731359]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -298.0
+offset_right = 395.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("2_omy8q")
+stretch_mode = 4
 
 [node name="MenuLabel" type="Label" parent="." unique_id=550825350]
 offset_left = 682.0
