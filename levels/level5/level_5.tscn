@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cxfki626kjfhh"]
+
+[ext_resource type="Script" uid="uid://c8dcdeme538tb" path="res://levels/level5/level5.gd" id="1_1wt0u"]
+
+[node name="Level5" type="Node2D" unique_id=47008913]
+script = ExtResource("1_1wt0u")
+last_message_text = "Ура"
