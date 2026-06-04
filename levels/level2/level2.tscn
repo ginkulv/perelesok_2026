@@ -1,17 +1,30 @@
 [gd_scene format=3 uid="uid://bp85hk3on4it2"]
 
 [ext_resource type="Script" uid="uid://dyyt7etrb47am" path="res://levels/level2/level2.gd" id="1_5x1h8"]
-[ext_resource type="Texture2D" uid="uid://bornbb1mqm5ni" path="res://levels/level2/placeholder.jpg" id="1_tr3t4"]
-[ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="2_dtxg0"]
+[ext_resource type="Texture2D" uid="uid://j1yrmrg4qm28" path="res://assets/images/АТЛАС.png" id="2_5x1h8"]
 [ext_resource type="PackedScene" uid="uid://bh2ynhubnrpkc" path="res://levels/level1/level1.tscn" id="2_mh2fd"]
+[ext_resource type="Texture2D" uid="uid://detioiwxnpf0n" path="res://assets/images/Atlas/ramka_kartin.tres" id="4_dtxg0"]
+[ext_resource type="Texture2D" uid="uid://bo4j31maahsqx" path="res://assets/images/Atlas/shkaf.tres" id="5_6moi3"]
+[ext_resource type="Texture2D" uid="uid://du7pna5g5uxm0" path="res://assets/images/Atlas/divan.tres" id="6_2ouyv"]
+[ext_resource type="Texture2D" uid="uid://dtxso5eybheyw" path="res://assets/images/Atlas/lampa_off.tres" id="6_ho0tc"]
+[ext_resource type="Texture2D" uid="uid://cb4s17n3rs8sh" path="res://assets/images/Atlas/lampa_potolok.tres" id="8_pda5e"]
+[ext_resource type="Texture2D" uid="uid://u3dbyj081qvk" path="res://assets/images/Atlas/Stol.tres" id="9_h2q84"]
+[ext_resource type="Texture2D" uid="uid://blo3bowgi4vdd" path="res://assets/images/Atlas/stul.tres" id="10_1gyy6"]
+[ext_resource type="Texture2D" uid="uid://c4cnfusjweqnu" path="res://assets/images/Atlas/PHOTO.tres" id="11_tlj67"]
+[ext_resource type="Texture2D" uid="uid://dhnoeqae2c4rk" path="res://assets/images/Atlas/chainik.tres" id="12_evo2f"]
+[ext_resource type="Texture2D" uid="uid://gsm65t07uhla" path="res://assets/images/Atlas/chashka.tres" id="13_6pmno"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtxg0"]
+atlas = ExtResource("2_5x1h8")
+region = Rect2(21.964153, 20.914577, 2560.0251, 1600.1053)
 
 [node name="Level2" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_5x1h8")
 
 [node name="RoomBackground" type="Sprite2D" parent="." unique_id=2015167122]
-position = Vector2(958.99994, 603.5)
-scale = Vector2(0.75062495, 0.75062495)
-texture = ExtResource("2_dtxg0")
+position = Vector2(961.99994, 551)
+scale = Vector2(0.4992187, 0.50125)
+texture = SubResource("AtlasTexture_dtxg0")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=559802189]
 visible = false
@@ -19,9 +32,58 @@ offset_right = 1920.0
 offset_bottom = 1081.0
 color = Color(0.6691236, 0.40299696, 0.2627629, 1)
 
-[node name="Placeholder" type="Sprite2D" parent="." unique_id=222608727]
-position = Vector2(877, 588)
-texture = ExtResource("1_tr3t4")
-
 [node name="Level1" parent="." unique_id=497096386 instance=ExtResource("2_mh2fd")]
+visible = false
+position = Vector2(599.99994, 393.99997)
 scale = Vector2(0.1, 0.1)
+
+[node name="RoomObjects" type="Node2D" parent="." unique_id=1523466007]
+
+[node name="RamkaKartin" type="Sprite2D" parent="RoomObjects" unique_id=239644264]
+position = Vector2(961, 542)
+texture = ExtResource("4_dtxg0")
+
+[node name="Shkaf" type="Sprite2D" parent="RoomObjects" unique_id=2008391410]
+position = Vector2(645, 627)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("5_6moi3")
+
+[node name="Divan" type="Sprite2D" parent="RoomObjects" unique_id=1845293993]
+position = Vector2(548, 717)
+scale = Vector2(0.545, 0.545)
+texture = ExtResource("6_2ouyv")
+
+[node name="LampaOff" type="Sprite2D" parent="RoomObjects" unique_id=1553960224]
+position = Vector2(508.99997, 667)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("6_ho0tc")
+
+[node name="LampaPotolok" type="Sprite2D" parent="RoomObjects" unique_id=1351104498]
+position = Vector2(957, 292)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_pda5e")
+
+[node name="Stol" type="Sprite2D" parent="RoomObjects" unique_id=1689618180]
+position = Vector2(1341, 727)
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("9_h2q84")
+
+[node name="Stul" type="Sprite2D" parent="RoomObjects" unique_id=2131513876]
+position = Vector2(1441, 736)
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("10_1gyy6")
+
+[node name="Photo" type="Sprite2D" parent="RoomObjects" unique_id=138255521]
+position = Vector2(739, 422)
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("11_tlj67")
+
+[node name="Chainik" type="Sprite2D" parent="RoomObjects" unique_id=1029080942]
+position = Vector2(1300, 644)
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("12_evo2f")
+
+[node name="Chashka" type="Sprite2D" parent="RoomObjects" unique_id=211070705]
+position = Vector2(1374, 656)
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("13_6pmno")

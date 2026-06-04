@@ -1,7 +1,7 @@
 extends Node
 
 @onready var expected_pos = {
-    $JigsawFragment1.name: Vector2(500, 500),
+    $JigsawFragment1.name: Vector2(0, 0),
     $JigsawFragment2.name: Vector2(500, 300),
 }
 
