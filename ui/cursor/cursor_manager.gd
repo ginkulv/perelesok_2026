@@ -30,7 +30,7 @@ func _ready() -> void:
 
     cursor_pos = get_viewport().get_visible_rect().size / 2
 
-    var cursor_texture = load("res://assets/images/Atlas/ui/cursor.tres")
+    var cursor_texture = load("res://assets/images/Atlas/ui/cursor_flipped.tres")
     var region = cursor_texture.region
     Input.set_custom_mouse_cursor(cursor_texture)
 

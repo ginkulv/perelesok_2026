@@ -79,6 +79,7 @@ func _on_jigsaw_placed(item: Area2D, pos: Vector2) -> void:
     
     if distance < 150:
         item.can_drag = false
+        item.z_index = 0
         item.input_pickable = false
         item.position = target_pos
         
