@@ -1,28 +1,157 @@
 [gd_scene format=3 uid="uid://bh2ynhubnrpkc"]
 
 [ext_resource type="Script" uid="uid://bd3ge5u7fddb8" path="res://levels/level1/level1.gd" id="1_c6lro"]
-[ext_resource type="PackedScene" uid="uid://dkxeenjaro2wd" path="res://levels/level1/props/jigsaw_fragment/jigsaw_fragment.tscn" id="1_eq150"]
-[ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="2_aatsp"]
+[ext_resource type="Texture2D" uid="uid://dp7e5ol72yn0q" path="res://assets/images/Atlas/PHOTO_BACKGROUND.tres" id="2_aatsp"]
+[ext_resource type="Script" uid="uid://d4ciptg8lvbkw" path="res://abstract/draggable_area2d.gd" id="3_gw1fo"]
 [ext_resource type="PackedScene" uid="uid://cm7tu3hfdfwxj" path="res://character/character.tscn" id="3_ps0pm"]
+[ext_resource type="Texture2D" uid="uid://b125bl5fcw75j" path="res://assets/images/Atlas/photo0.tres" id="4_jhqhn"]
+[ext_resource type="Texture2D" uid="uid://bgjh6qnlfc52k" path="res://assets/images/Atlas/photo2.tres" id="5_ddtso"]
+[ext_resource type="Texture2D" uid="uid://byy42j3dbkr20" path="res://assets/images/Atlas/photo3.tres" id="6_f7y8c"]
+[ext_resource type="Texture2D" uid="uid://bp0hrp5ovgiac" path="res://assets/images/Atlas/photo4.tres" id="7_xc23s"]
+[ext_resource type="Texture2D" uid="uid://bidoc7bwnfc5o" path="res://assets/images/Atlas/photo5.tres" id="8_n5g8f"]
+[ext_resource type="Texture2D" uid="uid://k3muyciibj22" path="res://assets/images/Atlas/photo6.tres" id="9_jhqhn"]
+[ext_resource type="Texture2D" uid="uid://cfve2u4t0s6ga" path="res://assets/images/Atlas/photo7.tres" id="10_ddtso"]
+[ext_resource type="Texture2D" uid="uid://b7e4mlus4shfm" path="res://assets/images/Atlas/photo8.tres" id="11_f7y8c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5sda"]
+size = Vector2(421.05276, 392.64716)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc23s"]
+size = Vector2(936.53265, 1134.5591)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5g8f"]
+size = Vector2(450.23193, 1654.3424)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qugyr"]
+size = Vector2(329.64404, 1150.0002)
 
 [node name="Level1" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_c6lro")
 
-[node name="RoomBackground" type="Sprite2D" parent="." unique_id=518137724]
-position = Vector2(960.00006, 600)
-scale = Vector2(0.75, 0.75)
+[node name="PhotoBackground" type="Sprite2D" parent="." unique_id=2089073907]
+position = Vector2(931, 558)
+scale = Vector2(0.64874995, 0.64874995)
 texture = ExtResource("2_aatsp")
 
-[node name="JigsawFragment2" parent="." unique_id=1390962387 instance=ExtResource("1_eq150")]
-position = Vector2(740, 362)
+[node name="JigsawFragment2" type="Area2D" parent="." unique_id=1390962387]
+position = Vector2(766, 212.00002)
+scale = Vector2(0.68, 0.68)
+script = ExtResource("3_gw1fo")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
 
-[node name="JigsawFragment1" parent="." unique_id=1428799320 instance=ExtResource("1_eq150")]
-z_index = 1
-position = Vector2(655, 619)
-priority = 1
+[node name="JigsawFragmentSprite" type="Sprite2D" parent="JigsawFragment2" unique_id=1007263620]
+scale = Vector2(0.95, 1)
+texture = ExtResource("4_jhqhn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JigsawFragment2" unique_id=1186312060]
+position = Vector2(-85.29427, -77.94117)
+scale = Vector2(0.9499995, 0.99999946)
+shape = SubResource("RectangleShape2D_p5sda")
+
+[node name="JigsawFragment3" type="Area2D" parent="." unique_id=244832942]
+position = Vector2(305.99997, 198)
+scale = Vector2(0.68, 0.68)
+script = ExtResource("3_gw1fo")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
+
+[node name="JigsawFragmentSprite" type="Sprite2D" parent="JigsawFragment3" unique_id=1632074415]
+scale = Vector2(0.95, 1)
+texture = ExtResource("5_ddtso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JigsawFragment3" unique_id=1640455898]
+position = Vector2(-110.29411, -70.58824)
+scale = Vector2(0.95, 1)
+shape = SubResource("RectangleShape2D_p5sda")
+
+[node name="JigsawFragment4" type="Area2D" parent="." unique_id=875343901]
+position = Vector2(1219, 832)
+scale = Vector2(0.68, 0.68)
+script = ExtResource("3_gw1fo")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
+
+[node name="JigsawFragmentSprite" type="Sprite2D" parent="JigsawFragment4" unique_id=30770953]
+scale = Vector2(0.95, 1)
+texture = ExtResource("6_f7y8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JigsawFragment4" unique_id=1455892227]
+position = Vector2(8.82335, 77.94125)
+scale = Vector2(0.95, 1)
+shape = SubResource("RectangleShape2D_p5sda")
+
+[node name="JigsawFragment5" type="Area2D" parent="." unique_id=1748014776]
+position = Vector2(1509.0001, 383.00003)
+scale = Vector2(0.68, 0.68)
+script = ExtResource("3_gw1fo")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
+
+[node name="JigsawFragmentSprite" type="Sprite2D" parent="JigsawFragment5" unique_id=1916312512]
+scale = Vector2(0.95, 1)
+texture = ExtResource("7_xc23s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JigsawFragment5" unique_id=1571891546]
+position = Vector2(88.235115, -258.82355)
+scale = Vector2(0.95, 1)
+shape = SubResource("RectangleShape2D_p5sda")
+
+[node name="JigsawFragment6" type="Area2D" parent="." unique_id=327763604]
+position = Vector2(790, 547)
+scale = Vector2(0.68, 0.68)
+script = ExtResource("3_gw1fo")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
+
+[node name="JigsawFragmentSprite" type="Sprite2D" parent="JigsawFragment6" unique_id=1486043844]
+scale = Vector2(0.95, 1)
+texture = ExtResource("8_n5g8f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JigsawFragment6" unique_id=1222734964]
+position = Vector2(81.61749, 209.92639)
+scale = Vector2(0.94999975, 0.99999976)
+shape = SubResource("RectangleShape2D_xc23s")
+
+[node name="JigsawFragment7" type="Area2D" parent="." unique_id=1714569935]
+position = Vector2(1390, 547)
+scale = Vector2(0.68, 0.68)
+script = ExtResource("3_gw1fo")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
+
+[node name="JigsawFragmentSprite" type="Sprite2D" parent="JigsawFragment7" unique_id=1938071199]
+scale = Vector2(0.95, 1)
+texture = ExtResource("9_jhqhn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JigsawFragment7" unique_id=136402084]
+position = Vector2(-68.82544, -2.8446045)
+rotation = -0.29033872
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_n5g8f")
+
+[node name="JigsawFragment8" type="Area2D" parent="." unique_id=1315754851]
+position = Vector2(238.99997, 668)
+scale = Vector2(0.68, 0.68)
+script = ExtResource("3_gw1fo")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
+
+[node name="JigsawFragmentSprite" type="Sprite2D" parent="JigsawFragment8" unique_id=948800416]
+scale = Vector2(0.95, 1)
+texture = ExtResource("10_ddtso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JigsawFragment8" unique_id=266072961]
+position = Vector2(-45.70433, 20.588257)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_qugyr")
+
+[node name="JigsawFragment9" type="Area2D" parent="." unique_id=290514472]
+position = Vector2(495.99997, 404)
+scale = Vector2(0.68, 0.68)
+script = ExtResource("3_gw1fo")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
+
+[node name="JigsawFragmentSprite" type="Sprite2D" parent="JigsawFragment9" unique_id=1442566247]
+scale = Vector2(0.95, 1)
+texture = ExtResource("11_f7y8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JigsawFragment9" unique_id=612231303]
+position = Vector2(-64.70588, -5.8823633)
+shape = SubResource("RectangleShape2D_p5sda")
 
 [node name="Character" parent="." unique_id=197201290 instance=ExtResource("3_ps0pm")]
-position = Vector2(1652, 850)
-
-[node name="Character2" parent="." unique_id=507703542 instance=ExtResource("3_ps0pm")]
-position = Vector2(1652, 850)
+position = Vector2(640, 802)

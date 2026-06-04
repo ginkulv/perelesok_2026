@@ -44,7 +44,7 @@ shape = SubResource("RectangleShape2D_hx151")
 position = Vector2(-3.999999, -5)
 scale = Vector2(0.912, 1)
 sprite_frames = SubResource("SpriteFrames_qkjfd")
-frame_progress = 0.2838193
+frame_progress = 0.95868564
 
 [node name="PlayerMessageArea2D" type="Area2D" parent="." unique_id=1464497694]
 position = Vector2(391, 170)
