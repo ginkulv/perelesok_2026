@@ -9,12 +9,12 @@ var index: int = 0
 var current_level: Node
 
 func _ready() -> void:
-	for i in range(1, num_of_levels + 1):
-		level_paths.append("res://levels/level" + str(i) + "/level" + str(i) + ".tscn")
-		level_names.append("Level" + str(i))
-	for i in range(1, num_of_levels + 1):
-		level_paths.append("res://levels/level" + str(i) + "/level" + str(i) + ".tscn")
-		level_names.append("Level" + str(i))
+    for i in range(1, num_of_levels + 1):
+        level_paths.append("res://levels/level" + str(i) + "/level" + str(i) + ".tscn")
+        level_names.append("Level" + str(i))
+    for i in range(1, num_of_levels + 1):
+        level_paths.append("res://levels/level" + str(i) + "/level" + str(i) + ".tscn")
+        level_names.append("Level" + str(i))
 
 
 func go_to_next_level() -> void:
