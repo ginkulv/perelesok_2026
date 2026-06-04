@@ -12,11 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://c4cnfusjweqnu" path="res://assets/images/Atlas/PHOTO.tres" id="11_tlj67"]
 [ext_resource type="Texture2D" uid="uid://dhnoeqae2c4rk" path="res://assets/images/Atlas/chainik.tres" id="12_evo2f"]
 [ext_resource type="Texture2D" uid="uid://gsm65t07uhla" path="res://assets/images/Atlas/chashka.tres" id="13_6pmno"]
+[ext_resource type="Script" uid="uid://d4ciptg8lvbkw" path="res://abstract/draggable_area2d.gd" id="14_h2q84"]
 [ext_resource type="Texture2D" uid="uid://ds218wl738kk6" path="res://assets/images/Atlas/kartina_pyle.tres" id="14_pda5e"]
+[ext_resource type="Texture2D" uid="uid://dcgii415wi21a" path="res://assets/images/Atlas/trapochka.tres" id="15_1gyy6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtxg0"]
 atlas = ExtResource("2_5x1h8")
 region = Rect2(21.964153, 20.914577, 2560.0251, 1600.1053)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlj67"]
+size = Vector2(99, 169)
 
 [node name="Level2" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_5x1h8")
@@ -87,3 +92,15 @@ texture = ExtResource("13_6pmno")
 position = Vector2(961.5, 548.5)
 scale = Vector2(0.60455245, 0.6623775)
 texture = ExtResource("14_pda5e")
+
+[node name="TrapochkaArea" type="Area2D" parent="." unique_id=1042978652]
+position = Vector2(1843, 209)
+script = ExtResource("14_h2q84")
+metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
+
+[node name="Trapochka" type="Sprite2D" parent="TrapochkaArea" unique_id=701058612]
+scale = Vector2(0.295, 0.295)
+texture = ExtResource("15_1gyy6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrapochkaArea" unique_id=1744599620]
+shape = SubResource("RectangleShape2D_tlj67")
