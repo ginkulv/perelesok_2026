@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dyyt7etrb47am" path="res://levels/level2/level2.gd" id="1_5x1h8"]
 [ext_resource type="Texture2D" uid="uid://j1yrmrg4qm28" path="res://assets/images/АТЛАС.png" id="2_5x1h8"]
-[ext_resource type="PackedScene" uid="uid://bh2ynhubnrpkc" path="res://levels/level1/level1.tscn" id="2_mh2fd"]
 [ext_resource type="Texture2D" uid="uid://detioiwxnpf0n" path="res://assets/images/Atlas/ramka_kartin.tres" id="4_dtxg0"]
 [ext_resource type="Texture2D" uid="uid://bo4j31maahsqx" path="res://assets/images/Atlas/shkaf.tres" id="5_6moi3"]
 [ext_resource type="Texture2D" uid="uid://du7pna5g5uxm0" path="res://assets/images/Atlas/divan.tres" id="6_2ouyv"]
@@ -32,10 +31,6 @@ visible = false
 offset_right = 1920.0
 offset_bottom = 1081.0
 color = Color(0.6691236, 0.40299696, 0.2627629, 1)
-
-[node name="Level1" parent="." unique_id=497096386 instance=ExtResource("2_mh2fd")]
-position = Vector2(599.99994, 393.99997)
-scale = Vector2(0.1, 0.1)
 
 [node name="RoomObjects" type="Node2D" parent="." unique_id=1523466007]
 
