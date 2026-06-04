@@ -2,15 +2,14 @@
 
 [ext_resource type="Script" uid="uid://d26cccxc4rmk0" path="res://levels/level4/level4.gd" id="1_ptmi2"]
 [ext_resource type="Script" uid="uid://7hgbnptmt4kw" path="res://levels/level4/props/note/note.gd" id="2_t5bou"]
-[ext_resource type="Texture2D" uid="uid://cr7j3i56f4il5" path="res://levels/level4/placeholder.jpg" id="2_xb5ex"]
 [ext_resource type="Script" uid="uid://b7qr2cdibn3ep" path="res://abstract/clickable_area2d.gd" id="4_hlj1s"]
+[ext_resource type="Texture2D" uid="uid://ba0gkqjkq6j4s" path="res://assets/images/Atlas/zapiska.tres" id="4_jwckb"]
 [ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="6_hlj1s"]
+[ext_resource type="Texture2D" uid="uid://bs320rqhkuiih" path="res://assets/images/Atlas/kover_1.tres" id="6_jwckb"]
+[ext_resource type="Texture2D" uid="uid://cgqaw3xdwsftg" path="res://assets/images/Atlas/kover_2.tres" id="7_cj05o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqpty"]
-size = Vector2(205, 161)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mph5u"]
-size = Vector2(902.5, 500)
+size = Vector2(205, 108.69531)
 
 [node name="Level4" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_ptmi2")
@@ -21,28 +20,33 @@ scale = Vector2(0.74999994, 0.75)
 texture = ExtResource("6_hlj1s")
 
 [node name="NoteArea2D" type="Area2D" parent="." unique_id=1757877577]
-position = Vector2(229, 461)
+position = Vector2(1239, 1016)
 script = ExtResource("2_t5bou")
 metadata/_custom_type_script = "uid://d4ciptg8lvbkw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea2D" unique_id=1919684825]
-position = Vector2(-0.03012085, -0.34326172)
+scale = Vector2(0.23, 0.23)
 shape = SubResource("RectangleShape2D_hqpty")
 
 [node name="Sprite2D" type="Sprite2D" parent="NoteArea2D" unique_id=1234842109]
-position = Vector2(-0.03012085, -0.34326172)
-scale = Vector2(0.22666667, 0.32696176)
-texture = ExtResource("2_xb5ex")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_jwckb")
 
 [node name="CarpetArea2D" type="Area2D" parent="." unique_id=61693479]
-position = Vector2(-2, -1)
+position = Vector2(912.075, 955.095)
+scale = Vector2(0.79, 0.79)
 script = ExtResource("4_hlj1s")
 metadata/_custom_type_script = "uid://b7qr2cdibn3ep"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CarpetArea2D" unique_id=111318203]
-position = Vector2(1218.25, 517)
-shape = SubResource("RectangleShape2D_mph5u")
+[node name="CarpetClosedCollision" type="CollisionPolygon2D" parent="CarpetArea2D" unique_id=1142350249]
+polygon = PackedVector2Array(-433, 113, -354, -121, 417, -117, 486, 119)
 
-[node name="Sprite2D" type="Sprite2D" parent="CarpetArea2D" unique_id=878878005]
-position = Vector2(1218, 516)
-texture = ExtResource("2_xb5ex")
+[node name="CarpetClosedSprite" type="Sprite2D" parent="CarpetArea2D" unique_id=878878005]
+position = Vector2(17.55, 1.06)
+texture = ExtResource("6_jwckb")
+
+[node name="CarpetOpenedCollision" type="CollisionPolygon2D" parent="CarpetArea2D" unique_id=108179133]
+polygon = PackedVector2Array(-435, 115, -353, -118, 418, -110, 450, 16, 341, 113)
+
+[node name="CarpetOpenedSprite" type="Sprite2D" parent="CarpetArea2D" unique_id=647458373]
+texture = ExtResource("7_cj05o")
