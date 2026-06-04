@@ -1,0 +1,64 @@
+[gd_resource type="Animation" format=3 uid="uid://legsl7xmmnjs"]
+
+[resource]
+resource_name = "level1"
+length = 35.3233
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.8666667, 3.1, 4.4, 7.5333333, 11.066667, 14.366667, 17.833332, 20.266666, 22.366667, 24.466667, 27.033333, 28.966665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"talk"
+}, {
+"args": [""],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk()"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"hide_message"
+}]
+}
