@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://k3muyciibj22" path="res://assets/images/Atlas/photo6.tres" id="9_jhqhn"]
 [ext_resource type="Texture2D" uid="uid://cfve2u4t0s6ga" path="res://assets/images/Atlas/photo7.tres" id="10_ddtso"]
 [ext_resource type="Texture2D" uid="uid://b7e4mlus4shfm" path="res://assets/images/Atlas/photo8.tres" id="11_f7y8c"]
-[ext_resource type="Animation" uid="uid://legsl7xmmnjs" path="res://levels/level1/level1Animation.tres" id="14_n5g8f"]
+[ext_resource type="PackedScene" uid="uid://cj4uhbopoqqi4" path="res://character/Cutscene.tscn" id="14_bntk2"]
 [ext_resource type="PackedScene" uid="uid://j1eiemujm72i" path="res://character/Note.tscn" id="15_qugyr"]
 [ext_resource type="PackedScene" uid="uid://nj6shgfintl" path="res://ui/note_ui/note_ui_canvas.tscn" id="16_bntk2"]
 
@@ -28,27 +28,6 @@ size = Vector2(450.23193, 1654.3424)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qugyr"]
 size = Vector2(329.64404, 1150.0002)
-
-[sub_resource type="Animation" id="Animation_xc23s"]
-length = 0.13333334
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/ColorRect:color:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qugyr"]
-_data = {
-&"RESET": SubResource("Animation_xc23s"),
-&"level1": ExtResource("14_n5g8f")
-}
 
 [node name="Level1" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_c6lro")
@@ -187,18 +166,7 @@ shape = SubResource("RectangleShape2D_p5sda")
 [node name="Character" parent="." unique_id=197201290 instance=ExtResource("3_ps0pm")]
 position = Vector2(640, 802)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1401084127]
-libraries/ = SubResource("AnimationLibrary_qugyr")
-autoplay = &"level1"
-
-[node name="ColorRect" type="ColorRect" parent="AnimationPlayer" unique_id=994464008]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="AnimationPlayer" parent="." unique_id=1676608915 instance=ExtResource("14_bntk2")]
 
 [node name="Note" parent="." unique_id=1552927014 instance=ExtResource("15_qugyr")]
 position = Vector2(908, 1009)
