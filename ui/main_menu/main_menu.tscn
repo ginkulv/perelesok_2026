@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dwg4kahwpqddq"]
 
 [ext_resource type="Script" uid="uid://bn1dvgupxag0u" path="res://ui/main_menu/main_menu.gd" id="1_sl1te"]
-[ext_resource type="Texture2D" uid="uid://bsst8m28v0vat" path="res://assets/images/Atlas/ui/menu_texture.tres" id="2_omy8q"]
+[ext_resource type="Texture2D" uid="uid://bsst8m28v0vat" path="res://assets/images/Atlas/menu_texture.tres" id="2_omy8q"]
 [ext_resource type="Theme" uid="uid://dtiv81upl2jvn" path="res://assets/ui_theme.theme" id="3_1g8jr"]
-[ext_resource type="Texture2D" uid="uid://cwwdt6hq2flk" path="res://assets/images/Atlas/ui/menu_button_start.tres" id="4_u184e"]
-[ext_resource type="Texture2D" uid="uid://b4v4jixgopjho" path="res://assets/images/Atlas/ui/menu_settings_button.tres" id="5_6mijq"]
-[ext_resource type="Texture2D" uid="uid://c14i3k2k858sg" path="res://assets/images/Atlas/ui/menu_info_button.tres" id="6_w2r0d"]
-[ext_resource type="Texture2D" uid="uid://dp11yh6udxw1t" path="res://assets/images/Atlas/ui/menu_exit_button.tres" id="7_4e78x"]
+[ext_resource type="Texture2D" uid="uid://cwwdt6hq2flk" path="res://assets/images/Atlas/menu_button_start.tres" id="4_u184e"]
+[ext_resource type="Texture2D" uid="uid://b4v4jixgopjho" path="res://assets/images/Atlas/menu_settings_button.tres" id="5_6mijq"]
+[ext_resource type="Texture2D" uid="uid://c14i3k2k858sg" path="res://assets/images/Atlas/menu_info_button.tres" id="6_w2r0d"]
+[ext_resource type="Texture2D" uid="uid://dp11yh6udxw1t" path="res://assets/images/Atlas/menu_exit_button.tres" id="7_4e78x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqeox"]
 font_size = 120

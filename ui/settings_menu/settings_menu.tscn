@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://bq6pp3yg2pf2q"]
 
 [ext_resource type="Script" uid="uid://br5t2ogu2py56" path="res://ui/settings_menu/settings_menu.gd" id="1_qwcqe"]
-[ext_resource type="Texture2D" uid="uid://bsst8m28v0vat" path="res://assets/images/Atlas/ui/menu_texture.tres" id="2_gjkyi"]
+[ext_resource type="Texture2D" uid="uid://bsst8m28v0vat" path="res://assets/images/Atlas/menu_texture.tres" id="2_gjkyi"]
 [ext_resource type="Theme" uid="uid://dtiv81upl2jvn" path="res://assets/ui_theme.theme" id="3_0b1cv"]
 [ext_resource type="FontFile" uid="uid://dgo3t53sw2gy2" path="res://assets/fonts/Junicode.ttf" id="4_0b1cv"]
-[ext_resource type="Texture2D" uid="uid://b2bwyy3gtoqlx" path="res://assets/images/Atlas/ui/menu_sounds_label.tres" id="4_p8urx"]
-[ext_resource type="Texture2D" uid="uid://bs7q2p1vveax5" path="res://assets/images/Atlas/ui/menu_music_label.tres" id="5_gjkyi"]
-[ext_resource type="Texture2D" uid="uid://dkl4mcu0uyd2a" path="res://assets/images/Atlas/ui/slider_pin_1.tres" id="6_58eej"]
-[ext_resource type="Texture2D" uid="uid://dqm02u8gk1piq" path="res://assets/images/Atlas/ui/slider_1.tres" id="7_6irx3"]
-[ext_resource type="Texture2D" uid="uid://cbd616ldecstq" path="res://assets/images/Atlas/ui/slider_pin_2.tres" id="9_nluif"]
+[ext_resource type="Texture2D" uid="uid://b2bwyy3gtoqlx" path="res://assets/images/Atlas/menu_sounds_label.tres" id="4_p8urx"]
+[ext_resource type="Texture2D" uid="uid://bs7q2p1vveax5" path="res://assets/images/Atlas/menu_music_label.tres" id="5_gjkyi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3vyp"]
 bg_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
@@ -19,7 +16,7 @@ bg_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
 font = ExtResource("4_0b1cv")
 font_size = 40
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ottm"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iii5b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6v77"]
 
@@ -76,10 +73,10 @@ text = "BACK"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel" unique_id=717480884]
 layout_mode = 1
-offset_left = 303.0
-offset_top = 403.0
-offset_right = 1009.0
-offset_bottom = 569.0
+offset_left = 605.0
+offset_top = 409.0
+offset_right = 1311.0
+offset_bottom = 575.0
 theme_override_constants/separation = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer" unique_id=1520485223]
@@ -102,26 +99,12 @@ scale = Vector2(0.87, 0.87)
 texture = ExtResource("4_p8urx")
 
 [node name="SFXSlider" type="HSlider" parent="SettingsPanel/VBoxContainer/HBoxContainer" unique_id=1899728067]
-z_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_icons/grabber = ExtResource("6_58eej")
-theme_override_icons/grabber_highlight = ExtResource("6_58eej")
-theme_override_icons/grabber_disabled = ExtResource("6_58eej")
-theme_override_styles/slider = SubResource("StyleBoxEmpty_6ottm")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_iii5b")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_r6v77")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_pxswo")
-
-[node name="Slider1" type="Sprite2D" parent="SettingsPanel/VBoxContainer/HBoxContainer/SFXSlider" unique_id=137930507]
-position = Vector2(201, 33)
-scale = Vector2(0.4952717, 1.2133334)
-texture = ExtResource("7_6irx3")
-
-[node name="Slider2" type="Sprite2D" parent="SettingsPanel/VBoxContainer/HBoxContainer/SFXSlider" unique_id=195468261]
-position = Vector2(201, 136)
-scale = Vector2(0.53526926, 1.2133334)
-texture = ExtResource("7_6irx3")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsPanel/VBoxContainer" unique_id=341906632]
 layout_mode = 2
@@ -146,9 +129,6 @@ texture = ExtResource("5_gjkyi")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_icons/grabber = ExtResource("9_nluif")
-theme_override_icons/grabber_highlight = ExtResource("9_nluif")
-theme_override_icons/grabber_disabled = ExtResource("9_nluif")
 theme_override_icons/tick = SubResource("ImageTexture_ngbvi")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_ngbvi")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_h271e")
