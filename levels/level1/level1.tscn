@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://nj6shgfintl" path="res://ui/note_ui/note_ui_canvas.tscn" id="16_bntk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5sda"]
-size = Vector2(421.05276, 392.64716)
+size = Vector2(438.08057, 415.44144)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xc23s"]
 size = Vector2(936.53265, 1134.5591)
@@ -99,8 +99,8 @@ scale = Vector2(0.95, 1)
 texture = ExtResource("7_xc23s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JigsawFragment5" unique_id=1571891546]
-position = Vector2(88.235115, -258.82355)
-scale = Vector2(0.95, 1)
+position = Vector2(86.0293, -270.2204)
+scale = Vector2(0.94999975, 0.99999976)
 shape = SubResource("RectangleShape2D_p5sda")
 
 [node name="JigsawFragment6" type="Area2D" parent="." unique_id=327763604]
