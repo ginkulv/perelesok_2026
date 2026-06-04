@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://bq6pp3yg2pf2q"]
 
 [ext_resource type="Script" uid="uid://br5t2ogu2py56" path="res://ui/settings_menu/settings_menu.gd" id="1_qwcqe"]
+[ext_resource type="Texture2D" uid="uid://bsst8m28v0vat" path="res://assets/images/Atlas/ui/menu_texture.tres" id="2_gjkyi"]
 [ext_resource type="Theme" uid="uid://dtiv81upl2jvn" path="res://assets/ui_theme.theme" id="3_0b1cv"]
 [ext_resource type="FontFile" uid="uid://dgo3t53sw2gy2" path="res://assets/fonts/Junicode.ttf" id="4_0b1cv"]
+[ext_resource type="Texture2D" uid="uid://b2bwyy3gtoqlx" path="res://assets/images/Atlas/ui/menu_sounds_label.tres" id="4_p8urx"]
+[ext_resource type="Texture2D" uid="uid://bs7q2p1vveax5" path="res://assets/images/Atlas/ui/menu_music_label.tres" id="5_gjkyi"]
+[ext_resource type="Texture2D" uid="uid://cw5v4au80cmme" path="res://assets/images/Atlas/ui/slider_button1.tres" id="6_58eej"]
+[ext_resource type="Texture2D" uid="uid://c0td10ttoo4gy" path="res://assets/images/Atlas/ui/slider.tres" id="7_6irx3"]
+[ext_resource type="Texture2D" uid="uid://bd4c6mi3yopxs" path="res://assets/images/Atlas/ui/slider_button2.tres" id="9_nluif"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3vyp"]
 bg_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
@@ -30,21 +36,28 @@ font_size = 40
 [node name="SettingsMenu" type="CanvasLayer" unique_id=1497344680]
 script = ExtResource("1_qwcqe")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=259986816]
-custom_minimum_size = Vector2(1920, 1080)
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.08235294, 0.23529412, 0.3372549, 0)
-
 [node name="SettingsPanel" type="Panel" parent="." unique_id=1545920698]
 process_mode = 3
 anchors_preset = -1
+anchor_left = -0.2734375
+anchor_top = -0.19629629
+anchor_right = 0.23645833
+anchor_bottom = 0.3
 offset_left = 522.0
 offset_top = 211.0
 offset_right = 1464.0
 offset_bottom = 753.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_x3vyp")
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="SettingsPanel" unique_id=187440007]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 2561.0
+offset_bottom = 1600.0
+scale = Vector2(0.755, 0.755)
+texture = ExtResource("2_gjkyi")
 
 [node name="BackButton" type="Button" parent="SettingsPanel" unique_id=1616493547]
 layout_mode = 1
@@ -53,20 +66,20 @@ anchor_left = 0.28800002
 anchor_top = 0.80700004
 anchor_right = 0.28800002
 anchor_bottom = 0.80700004
-offset_left = 67.70395
-offset_top = -97.39401
-offset_right = 311.70398
-offset_bottom = -12.394012
+offset_left = 311.75195
+offset_top = -214.94604
+offset_right = 555.75195
+offset_bottom = -129.94604
 mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mishw")
 text = "BACK"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel" unique_id=717480884]
 layout_mode = 1
-offset_left = 73.0
-offset_top = 122.0
-offset_right = 779.0
-offset_bottom = 288.0
+offset_left = 356.0
+offset_top = 391.0
+offset_right = 1062.0
+offset_bottom = 557.0
 theme_override_constants/separation = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer" unique_id=1520485223]
@@ -76,17 +89,33 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("3_0b1cv")
-text = "SFX"
 label_settings = SubResource("LabelSettings_7pacj")
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SettingsPanel/VBoxContainer/HBoxContainer/SFXLabel" unique_id=799025821]
+layout_mode = 0
+offset_left = 70.0
+offset_top = -6.0
+offset_right = 221.0
+offset_bottom = 77.0
+scale = Vector2(0.87, 0.87)
+texture = ExtResource("4_p8urx")
 
 [node name="SFXSlider" type="HSlider" parent="SettingsPanel/VBoxContainer/HBoxContainer" unique_id=1899728067]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_icons/grabber = ExtResource("6_58eej")
+theme_override_icons/grabber_highlight = ExtResource("6_58eej")
+theme_override_icons/grabber_disabled = ExtResource("6_58eej")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_iii5b")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_r6v77")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_pxswo")
+
+[node name="Slider" type="Sprite2D" parent="SettingsPanel/VBoxContainer/HBoxContainer/SFXSlider" unique_id=963747173]
+position = Vector2(198, 31)
+scale = Vector2(0.5599975, 1)
+texture = ExtResource("7_6irx3")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsPanel/VBoxContainer" unique_id=341906632]
 layout_mode = 2
@@ -95,18 +124,34 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("3_0b1cv")
-text = "Music"
 label_settings = SubResource("LabelSettings_7pacj")
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SettingsPanel/VBoxContainer/HBoxContainer2/MusicLabel" unique_id=1387094060]
+layout_mode = 0
+offset_left = 50.0
+offset_top = -16.0
+offset_right = 274.0
+offset_bottom = 95.0
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("5_gjkyi")
 
 [node name="MusicSlider" type="HSlider" parent="SettingsPanel/VBoxContainer/HBoxContainer2" unique_id=2135023683]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_icons/grabber = ExtResource("9_nluif")
+theme_override_icons/grabber_highlight = ExtResource("9_nluif")
+theme_override_icons/grabber_disabled = ExtResource("9_nluif")
 theme_override_icons/tick = SubResource("ImageTexture_ngbvi")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_ngbvi")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_h271e")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_7dpwb")
+
+[node name="Slider2" type="Sprite2D" parent="SettingsPanel/VBoxContainer/HBoxContainer2/MusicSlider" unique_id=880722299]
+position = Vector2(193, 28)
+scale = Vector2(0.5346832, 1)
+texture = ExtResource("7_6irx3")
 
 [connection signal="button_up" from="SettingsPanel/BackButton" to="." method="_on_back_button_button_up"]
 [connection signal="value_changed" from="SettingsPanel/VBoxContainer/HBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]

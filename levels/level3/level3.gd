@@ -1,7 +1,9 @@
 extends Node
 
-@onready var room_sprite = $RoomSprite
+@onready var room_background_sprite = $RoomBackground
 var material: ShaderMaterial
+
+@export var initial_params: float = 1.0
 
 @export var noise_strength: float = 0.1:
     set(value):
@@ -47,18 +49,34 @@ func _ready() -> void:
     material = ShaderMaterial.new()
     material.shader = shader
 
-    material.set_shader_parameter("strength", 0.15)
+    noise_strength = initial_params
+    noise_speed = initial_params
+    vhs_strength = initial_params
+    jitter_amount = initial_params
+    color_bleed = initial_params
+    scanline_intensity = initial_params
 
-    room_sprite.material = material
+    room_background_sprite.material = material
 
-    $Knob1.value_changed.connect(_on_white_noise_changed)
-    $Knob2.value_changed.connect(_on_vhs_changed)
+    $TvBorder/WhiteNoiseKnob.value_changed.connect(_on_white_noise_changed)
+    $TvBorder/VhsKnob.value_changed.connect(_on_vhs_changed)
+
+    $TvBorder/WhiteNoiseGreenLight.visible = false
+    $TvBorder/VhsGreenLight.visible = false
 
 func _on_white_noise_changed(value: float, is_correct: bool) -> void:
     noise_strength = value
     noise_speed = value
     
     is_white_noise_correct = is_correct 
+
+    if is_white_noise_correct:
+        $TvBorder/WhiteNoiseGreenLight.visible = true
+        $TvBorder/WhiteNoiseRedLight.visible = false
+    else:
+        $TvBorder/WhiteNoiseGreenLight.visible = false
+        $TvBorder/WhiteNoiseRedLight.visible = true
+
     if is_white_noise_correct and is_vhs_correct:
         print("who hoo!")
 
@@ -68,6 +86,13 @@ func _on_vhs_changed(value: float, is_correct: bool) -> void:
     color_bleed = value
     scanline_intensity = value
     
+    if is_vhs_correct:
+        $TvBorder/VhsGreenLight.visible = true
+        $TvBorder/VhsRedLight.visible = false
+    else:
+        $TvBorder/VhsGreenLight.visible = false
+        $TvBorder/VhsRedLight.visible = true
+
     is_vhs_correct = is_correct
     if is_white_noise_correct and is_vhs_correct:
         print("who hoo!")
