@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/крутилка тв 1.mp3-6e07345e27b001f7b
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

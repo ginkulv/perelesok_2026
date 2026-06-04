@@ -264,6 +264,7 @@ sprite_frames = SubResource("SpriteFrames_qkjfd")
 frame_progress = 0.95868564
 
 [node name="PlayerMessageArea2D" type="Area2D" parent="." unique_id=1464497694]
+z_index = 30
 position = Vector2(391, 170)
 script = ExtResource("3_ugqs2")
 metadata/_custom_type_script = "uid://b7qr2cdibn3ep"
