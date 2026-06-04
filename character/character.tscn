@@ -1,14 +1,35 @@
 [gd_scene format=3 uid="uid://cm7tu3hfdfwxj"]
 
 [ext_resource type="Script" uid="uid://bpwoeafigygf8" path="res://character/character.gd" id="1_1l1n4"]
-[ext_resource type="Texture2D" uid="uid://byoferfxql3y7" path="res://character/placeholder.jpg" id="2_ugqs2"]
+[ext_resource type="Texture2D" uid="uid://b1pr75bkhn105" path="res://assets/images/Atlas/character_idle_0.tres" id="2_o6jyn"]
+[ext_resource type="Texture2D" uid="uid://gvv6asd26b86" path="res://assets/images/Atlas/character_idle_1.tres" id="3_tgjim"]
 [ext_resource type="Script" uid="uid://b7qr2cdibn3ep" path="res://abstract/clickable_area2d.gd" id="3_ugqs2"]
+[ext_resource type="Texture2D" uid="uid://c3wruvv5cxdme" path="res://assets/images/Atlas/character_idle_2.tres" id="4_wy5t8"]
+[ext_resource type="Texture2D" uid="uid://ddh5jg1i3tdr0" path="res://assets/images/Atlas/ui_dialogcloud_1.tres" id="6_dy06j"]
+[ext_resource type="FontFile" uid="uid://dgo3t53sw2gy2" path="res://assets/fonts/Junicode.ttf" id="7_tgjim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
-size = Vector2(136, 304)
+size = Vector2(132, 554)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qkjfd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o6jyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tgjim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wy5t8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rvpn"]
-size = Vector2(234, 90)
+size = Vector2(406, 110)
 
 [node name="Character" type="Node2D" unique_id=197201290]
 script = ExtResource("1_1l1n4")
@@ -16,37 +37,33 @@ script = ExtResource("1_1l1n4")
 [node name="CharacterBody2D" type="AnimatableBody2D" parent="." unique_id=688282596]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=569048953]
+position = Vector2(2, -5)
 shape = SubResource("RectangleShape2D_hx151")
 
-[node name="Placeholder" type="Sprite2D" parent="CharacterBody2D" unique_id=699846871]
-scale = Vector2(0.15111111, 0.610664)
-texture = ExtResource("2_ugqs2")
-
-[node name="Placeholder2" type="Sprite2D" parent="CharacterBody2D" unique_id=1305886360]
-scale = Vector2(0.15111111, 0.610664)
-texture = ExtResource("2_ugqs2")
-
-[node name="Placeholder3" type="Sprite2D" parent="CharacterBody2D" unique_id=1604724298]
-scale = Vector2(0.15111111, 0.610664)
-texture = ExtResource("2_ugqs2")
+[node name="Placeholder" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=991381985]
+position = Vector2(-3.999999, -5)
+scale = Vector2(0.912, 1)
+sprite_frames = SubResource("SpriteFrames_qkjfd")
+frame_progress = 0.2838193
 
 [node name="PlayerMessageArea2D" type="Area2D" parent="." unique_id=1464497694]
+position = Vector2(391, 170)
 script = ExtResource("3_ugqs2")
 metadata/_custom_type_script = "uid://b7qr2cdibn3ep"
 
 [node name="Placeholder" type="Sprite2D" parent="PlayerMessageArea2D" unique_id=1399531517]
-position = Vector2(0, -225)
-scale = Vector2(0.26, 0.17706233)
-texture = ExtResource("2_ugqs2")
+position = Vector2(-16.999985, -245)
+scale = Vector2(1.468, 1)
+texture = ExtResource("6_dy06j")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PlayerMessageArea2D" unique_id=651305059]
-offset_left = -82.0
+offset_left = -175.0
 offset_top = -256.0
-offset_right = 94.0
-offset_bottom = -198.0
+offset_right = 223.0
+offset_bottom = -159.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "test test test"
+theme_override_fonts/normal_font = ExtResource("7_tgjim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMessageArea2D" unique_id=964252358]
-position = Vector2(0, -225)
+position = Vector2(25, -215)
 shape = SubResource("RectangleShape2D_0rvpn")
