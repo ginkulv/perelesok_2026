@@ -25,6 +25,12 @@ var event_messages: Dictionary = {
 	"full_complete": "Ты собрал все!"
 }
 
+var note: Array = [
+"Текст записки первый",
+"Текст записки второй"
+]
+
+
 var dialogue_list: Array[String] = []
 var current_index: int = 0
 

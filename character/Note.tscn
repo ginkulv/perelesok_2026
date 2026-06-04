@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://j1eiemujm72i"]
+
+[ext_resource type="Script" uid="uid://b7qr2cdibn3ep" path="res://abstract/clickable_area2d.gd" id="1_j7gge"]
+[ext_resource type="Script" uid="uid://vrmmip5k10ki" path="res://character/note.gd" id="1_v76lv"]
+[ext_resource type="Texture2D" uid="uid://ba0gkqjkq6j4s" path="res://assets/images/Atlas/zapiska.tres" id="2_v76lv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_343qc"]
+size = Vector2(140, 84)
+
+[node name="Note" type="Node2D" unique_id=1552927014]
+script = ExtResource("1_v76lv")
+
+[node name="ClickableArea2D" type="Area2D" parent="." unique_id=1351871731]
+script = ExtResource("1_j7gge")
+metadata/_custom_type_script = "uid://b7qr2cdibn3ep"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea2D" unique_id=1877809347]
+position = Vector2(7, 1)
+shape = SubResource("RectangleShape2D_343qc")
+
+[node name="Sprite2D" type="Sprite2D" parent="ClickableArea2D" unique_id=976913045]
+texture = ExtResource("2_v76lv")

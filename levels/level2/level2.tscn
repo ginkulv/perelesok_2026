@@ -11,8 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://blo3bowgi4vdd" path="res://assets/images/Atlas/stul.tres" id="10_1gyy6"]
 [ext_resource type="Texture2D" uid="uid://c4cnfusjweqnu" path="res://assets/images/Atlas/PHOTO.tres" id="11_tlj67"]
 [ext_resource type="Texture2D" uid="uid://dhnoeqae2c4rk" path="res://assets/images/Atlas/chainik.tres" id="12_evo2f"]
+[ext_resource type="PackedScene" uid="uid://cm7tu3hfdfwxj" path="res://character/character.tscn" id="13_1gyy6"]
 [ext_resource type="Texture2D" uid="uid://gsm65t07uhla" path="res://assets/images/Atlas/chashka.tres" id="13_6pmno"]
 [ext_resource type="Texture2D" uid="uid://ds218wl738kk6" path="res://assets/images/Atlas/kartina_pyle.tres" id="14_pda5e"]
+[ext_resource type="PackedScene" uid="uid://j1eiemujm72i" path="res://character/Note.tscn" id="14_tlj67"]
+[ext_resource type="PackedScene" uid="uid://nj6shgfintl" path="res://ui/note_ui/note_ui_canvas.tscn" id="16_evo2f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtxg0"]
 atlas = ExtResource("2_5x1h8")
@@ -83,7 +86,16 @@ position = Vector2(1374, 656)
 scale = Vector2(0.49, 0.49)
 texture = ExtResource("13_6pmno")
 
+[node name="Character" parent="." unique_id=197201290 instance=ExtResource("13_1gyy6")]
+position = Vector2(802, 684)
+scale = Vector2(0.52, 0.52)
+
+[node name="Note" parent="." unique_id=1552927014 instance=ExtResource("14_tlj67")]
+position = Vector2(1273, 849)
+
 [node name="KartinaPyle" type="Sprite2D" parent="." unique_id=1252074879]
 position = Vector2(961.5, 548.5)
 scale = Vector2(0.60455245, 0.6623775)
 texture = ExtResource("14_pda5e")
+
+[node name="NoteUi2" parent="." unique_id=701267839 instance=ExtResource("16_evo2f")]

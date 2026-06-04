@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://nj6shgfintl"]
+
+[ext_resource type="PackedScene" uid="uid://ban1tiekketbs" path="res://ui/note_ui/note_ui.tscn" id="1_ax5c7"]
+
+[node name="NoteUi" type="CanvasLayer" unique_id=701267839]
+
+[node name="NoteUi" parent="." unique_id=571923533 groups=["note_ui"] instance=ExtResource("1_ax5c7")]
+visible = false

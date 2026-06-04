@@ -43,6 +43,7 @@ movie_writer/disable_vsync=true
 [global_group]
 
 ui_elements=""
+note_ui=""
 
 [input]
 
