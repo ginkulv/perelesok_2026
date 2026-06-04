@@ -26,7 +26,7 @@ func _ready() -> void:
     # Настройка механики пыли
     AudioManager.play_music(load("res://assets/music/картина.mp3"))
     setup_mask_system()
-    MessageManager.start_from_index(12)
+    MessageManager.start_from_text("Знаешь, на самом деле здесь есть цвета",true)
     # Подключаем сигналы
     _setup_connections()
     

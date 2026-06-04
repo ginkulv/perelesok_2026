@@ -119,9 +119,7 @@ func _on_puzzle_complete() -> void:
     MessageManager.show_event("puzzle_complete")
     
     await get_tree().create_timer(3.5).timeout
-    
-    if LevelManager:
-        LevelManager.go_to_next_level()
+    LevelManager.go_to_next_level()
 
 func _fade_out_all_pieces() -> void:
     var fragments = [

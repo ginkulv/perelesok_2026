@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://dcgii415wi21a" path="res://assets/images/Atlas/trapochka.tres" id="15_1gyy6"]
 [ext_resource type="PackedScene" uid="uid://nj6shgfintl" path="res://ui/note_ui/note_ui_canvas.tscn" id="16_evo2f"]
 [ext_resource type="Texture2D" uid="uid://ckrcxysea2xj2" path="res://assets/images/Atlas/lampa_on.tres" id="16_ykrqb"]
-[ext_resource type="PackedScene" uid="uid://cj4uhbopoqqi4" path="res://character/Cutscene.tscn" id="19_6pmno"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtxg0"]
 atlas = ExtResource("2_5x1h8")
@@ -39,6 +38,50 @@ size = Vector2(109, 425)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlj67"]
 size = Vector2(99, 169)
+
+[sub_resource type="Animation" id="Animation_xcfw4"]
+resource_name = "level2"
+length = 30.166666
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.0333333, 5.0333333, 7.9333334, 10.7, 13.666667, 16.733334, 20.166666, 23.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}, {
+"args": [],
+"method": &"talk"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdiim"]
+_data = {
+&"level2": SubResource("Animation_xcfw4")
+}
 
 [node name="Level2" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_5x1h8")
@@ -151,8 +194,8 @@ position = Vector2(526.5, 659.5)
 shape = SubResource("RectangleShape2D_ouxlc")
 
 [node name="Character" parent="." unique_id=197201290 instance=ExtResource("13_1gyy6")]
-position = Vector2(796.99994, 674)
-scale = Vector2(0.565, 0.565)
+position = Vector2(763, 701)
+scale = Vector2(0.72, 0.72)
 
 [node name="Note" parent="." unique_id=1552927014 instance=ExtResource("14_tlj67")]
 position = Vector2(1134, 829)
@@ -177,10 +220,6 @@ shape = SubResource("RectangleShape2D_tlj67")
 
 [node name="NoteUi" parent="." unique_id=701267839 instance=ExtResource("16_evo2f")]
 
-[node name="AnimationPlayer" parent="." unique_id=1676608915 instance=ExtResource("19_6pmno")]
-
-[node name="ColorRect2" type="ColorRect" parent="AnimationPlayer" unique_id=559802189]
-visible = false
-offset_right = 1920.0
-offset_bottom = 1081.0
-color = Color(0, 0, 0, 1)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1315689152]
+libraries/ = SubResource("AnimationLibrary_pdiim")
+autoplay = &"level2"

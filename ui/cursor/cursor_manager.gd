@@ -30,12 +30,11 @@ func _ready() -> void:
 
 	cursor_pos = get_viewport().get_visible_rect().size / 2
 
-	var cursor_texture = load("res://assets/images/Atlas/ui/cursor.tres")
-	var region = cursor_texture.region
-	Input.set_custom_mouse_cursor(cursor_texture)
+	var cursor_image = create_default_cursor_image()
+	Input.set_custom_mouse_cursor(cursor_image)
 
 	cursor_sprite = Sprite2D.new()
-	cursor_sprite.texture = cursor_texture
+	cursor_sprite.texture = ImageTexture.create_from_image(cursor_image)
 	cursor_sprite.centered = false
 	cursor_sprite.z_index = 1000
 	cursor_sprite.position = cursor_pos
@@ -46,6 +45,18 @@ func _ready() -> void:
 	add_child(cursor_canvas_layer)
 
 	GameState.state_changed.connect(_on_game_state_changed)
+
+# жертва вайбкодинга
+func create_default_cursor_image() -> Image:
+	#return load("res://assets/images/Atlas/ui/cursor.tres")
+	var dim = 24
+	var image = Image.create(dim, dim, false, Image.FORMAT_RGBA8)
+	image.fill(Color.TRANSPARENT)
+	for x in range(dim):
+		for y in range(dim):
+			if x <= y and x < 24 and y < 24:
+				image.set_pixel(x, y, Color.WHITE)
+	return image
 
 func _process(delta: float) -> void:
 	if is_dragging and dragged_item:

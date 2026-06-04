@@ -8,6 +8,7 @@ script = ExtResource("1_ikwhb")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=251962253]
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1153070367]
+visible = false
 visibility_layer = 512
 offset_left = 22.0
 offset_top = 27.0

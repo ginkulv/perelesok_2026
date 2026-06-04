@@ -21,7 +21,7 @@ shader = ExtResource("5_jvs16")
 shader_parameter/vhs_strength = 0.5
 shader_parameter/jitter_amount = 0.05000000074506
 shader_parameter/color_bleed = 0.0010000000475
-shader_parameter/scanline_intensity = 0.0550000026125
+shader_parameter/scanline_intensity = 0.0410000019475
 shader_parameter/noise_strength = 0.30000001192093
 shader_parameter/noise_speed = 2.558000121505
 shader_parameter/desaturate_start = 0.1
@@ -33,64 +33,19 @@ radius = 49.010204
 [sub_resource type="CircleShape2D" id="CircleShape2D_3jg3o"]
 radius = 52.773098
 
-[sub_resource type="Animation" id="Animation_jvs16"]
-resource_name = "level3"
-length = 37.4
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Character")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(3.0333333, 6.204353, 9.781637, 12.967656, 16.489046, 20.178122, 23.58772, 26.941425, 29.84797, 33.03399, 35.533333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kbys4"]
-_data = {
-&"level3": SubResource("Animation_jvs16")
-}
-
 [node name="Level3" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_ptmi2")
-initial_params = 0.775
-white_noise_max_correct = 0.02
-vhs_max_correct = 0.01
+initial_params = 0.0
+white_noise_min_correct = 0.035
+white_noise_max_correct = null
+vhs_min_correct = 0.15
+vhs_max_correct = null
+noise_strength = 0.0
+noise_speed = 0.0
+vhs_strength = 0.0
+jitter_amount = 0.0
+color_bleed = 0.0
+scanline_intensity = 0.0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1626140412]
 offset_right = 1920.0
@@ -146,7 +101,6 @@ texture = ExtResource("7_3jg3o")
 position = Vector2(1077.6979, -187.05042)
 scale = Vector2(1.438849, 1.438849)
 script = ExtResource("3_xb5ex")
-deg_to_val_ratio = 0.005
 metadata/_custom_type_script = "uid://cm82by35xjxr6"
 
 [node name="Sprite2D" type="Sprite2D" parent="TvBorder/WhiteNoiseKnob" unique_id=329483272]
@@ -164,7 +118,6 @@ autoplay = true
 position = Vector2(1077.6979, 251.79858)
 scale = Vector2(1.438849, 1.438849)
 script = ExtResource("3_xb5ex")
-deg_to_val_ratio = 0.005
 metadata/_custom_type_script = "uid://cm82by35xjxr6"
 
 [node name="Sprite2D" type="Sprite2D" parent="TvBorder/VhsKnob" unique_id=1241969131]
@@ -179,7 +132,3 @@ stream = ExtResource("10_i6jb0")
 autoplay = true
 
 [node name="NoteUi" parent="." unique_id=701267839 instance=ExtResource("12_sl4p2")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1144944756]
-libraries/ = SubResource("AnimationLibrary_kbys4")
-autoplay = &"level3"

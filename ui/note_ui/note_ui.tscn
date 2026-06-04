@@ -8,7 +8,7 @@
 atlas = ExtResource("1_j2mr4")
 region = Rect2(3146, 7126, 2063, 1022)
 
-[node name="NoteUi" type="Control" unique_id=571923533]
+[node name="NoteUi" type="Control" unique_id=571923533 groups=["note_ui"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.33503422, 0.31284738, 0.30572745, 1)
 theme_override_fonts/normal_font = ExtResource("2_yic0b")
-theme_override_font_sizes/normal_font_size = 56
+theme_override_font_sizes/normal_font_size = 42
 text = "ewtrwetertwert"
 horizontal_alignment = 1
 vertical_alignment = 1

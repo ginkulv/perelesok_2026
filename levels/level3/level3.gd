@@ -1,99 +1,239 @@
-extends Node
+extends Node2D
 
-@onready var room_background_sprite = $RoomBackground
-var material: ShaderMaterial
+@onready var room_background_sprite = $shader
+var shader_material: ShaderMaterial
 
-@export var initial_params: float = 1.0
+@export var initial_params: float = 0.0
 
-@export var noise_strength: float = 0.1:
-	set(value):
-		noise_strength = value
-		if material:
-			material.set_shader_parameter("noise_strength", value)
+# Текущие значения от крутилок
+var current_noise_value: float = 0.0
+var current_vhs_value: float = 0.0
 
-@export var noise_speed: float = 0.1:
-	set(value):
-		noise_speed = value
-		if material:
-			material.set_shader_parameter("noise_speed", value)
+# Допустимые диапазоны для "зелёной зоны"
+@export var white_noise_min_correct: float = 0.0   # Зеленая зона при 0
+@export var white_noise_max_correct: float = 0.05
+@export var vhs_min_correct: float = 0.0
+@export var vhs_max_correct: float = 0.05
 
-@export var vhs_strength: float = 0.1:
-	set(value):
-		vhs_strength = value
-		if material:
-			material.set_shader_parameter("vhs_strength", value)
+var current_quality_noise: float = 1.0
+var current_quality_vhs: float = 1.0
 
-@export var jitter_amount: float = 0.1:
-	set(value):
-		jitter_amount = value
-		if material:
-			material.set_shader_parameter("jitter_amount", value)
-
-@export var color_bleed: float = 0.1:
-	set(value):
-		color_bleed = value
-		if material:
-			material.set_shader_parameter("color_bleed", value)
-
-@export var scanline_intensity: float = 0.1:
-	set(value):
-		scanline_intensity = value
-		if material:
-			material.set_shader_parameter("scanline_intensity", value)
-			
 var is_white_noise_correct: bool = false
 var is_vhs_correct: bool = false
 
+signal puzzle_completed()
+signal setting_changed(setting_name: String, value: float)
+
 func _ready() -> void:
-	var shader = preload("res://levels/level3/noise_vhs_shader.gdshader")
-	material = ShaderMaterial.new()
-	material.shader = shader
+	AudioManager.play_music(load("res://assets/music/телефизор.mp3"))
+	MessageManager.start_from_text("Ты еще тут? Мне показалось, что ты пропал",true)
+	# Создаем шейдерный материал
+	var shader = room_background_sprite.material.shader
+	shader_material = room_background_sprite.material
+	shader_material.shader = shader
+	
+	# Устанавливаем начальные параметры (минимальные эффекты)
+	#shader_material.set_shader_parameter("noise_strength", 0.3)
+	#shader_material.set_shader_parameter("noise_speed", 2.5)
+	#shader_material.set_shader_parameter("desaturate_start", 0.08)
+	#shader_material.set_shader_parameter("desaturate_end", 0.25)
+	#
+	#shader_material.set_shader_parameter("vhs_strength", 0.5)
+	#shader_material.set_shader_parameter("jitter_amount", 0.05)
+	#shader_material.set_shader_parameter("color_bleed", 0.001)
+	#shader_material.set_shader_parameter("scanline_intensity", 0.041)
 
-	noise_strength = initial_params
-	noise_speed = initial_params
-	vhs_strength = initial_params
-	jitter_amount = initial_params
-	color_bleed = initial_params
-	scanline_intensity = initial_params
+	#room_background_sprite.material = shader_material
 
-	room_background_sprite.material = material
-
-	$TvBorder/WhiteNoiseKnob.value_changed.connect(_on_white_noise_changed)
-	$TvBorder/VhsKnob.value_changed.connect(_on_vhs_changed)
+	# Подключаем сигналы
+	var white_knob = $TvBorder/WhiteNoiseKnob
+	var vhs_knob = $TvBorder/VhsKnob
+	
+	white_knob.value_changed.connect(_on_white_noise_changed)
+	vhs_knob.value_changed.connect(_on_vhs_changed)
 
 	$TvBorder/WhiteNoiseGreenLight.visible = false
 	$TvBorder/VhsGreenLight.visible = false
+	$TvBorder/WhiteNoiseRedLight.visible = true
+	$TvBorder/VhsRedLight.visible = true
+	
+	_setup_knob_sounds()
+	
+	# Начальные значения
+	current_noise_value = initial_params
+	current_vhs_value = initial_params
+	
+	# Применяем эффекты
+	_apply_effects()
+
+func _setup_knob_sounds() -> void:
+	var white_knob = $TvBorder/WhiteNoiseKnob
+	var vhs_knob = $TvBorder/VhsKnob
+	
+	if not white_knob.rotated.is_connected(_on_white_knob_rotated):
+		white_knob.rotated.connect(_on_white_knob_rotated)
+	
+	if not vhs_knob.rotated.is_connected(_on_vhs_knob_rotated):
+		vhs_knob.rotated.connect(_on_vhs_knob_rotated)
+
+func _on_white_knob_rotated() -> void:
+	AudioManager.play_sfx("крутим крутилки.mp3", 0.3)
+
+func _on_vhs_knob_rotated() -> void:
+	AudioManager.play_sfx("крутим крутилки.mp3", 0.3)
+
+func _calculate_quality_noise() -> float:
+	# Качество для шума (0-1)
+	if current_noise_value < white_noise_min_correct:
+		var distance = white_noise_min_correct - current_noise_value
+		var max_distance = white_noise_min_correct
+		return 1.0 - clamp(distance / max_distance, 0.0, 0.95)
+	elif current_noise_value > white_noise_max_correct:
+		var distance = current_noise_value - white_noise_max_correct
+		var max_distance = 1.0 - white_noise_max_correct
+		return 1.0 - clamp(distance / max_distance, 0.0, 0.95)
+	else:
+		return 1.0
+
+func _calculate_quality_vhs() -> float:
+	# Качество для VHS (0-1)
+	if current_vhs_value < vhs_min_correct:
+		var distance = vhs_min_correct - current_vhs_value
+		var max_distance = vhs_min_correct
+		return 1.0 - clamp(distance / max_distance, 0.0, 0.95)
+	elif current_vhs_value > vhs_max_correct:
+		var distance = current_vhs_value - vhs_max_correct
+		var max_distance = 1.0 - vhs_max_correct
+		return 1.0 - clamp(distance / max_distance, 0.0, 0.95)
+	else:
+		return 1.0
+
+func _apply_effects() -> void:
+	if not shader_material:
+		return
+	
+	# Обновляем статус правильности
+	var new_white_correct = (current_noise_value >= white_noise_min_correct and 
+							   current_noise_value <= white_noise_max_correct)
+	var new_vhs_correct = (current_vhs_value >= vhs_min_correct and 
+						   current_vhs_value <= vhs_max_correct)
+	
+	if new_white_correct != is_white_noise_correct:
+		is_white_noise_correct = new_white_correct
+		_update_indicators("white_noise", is_white_noise_correct)
+	
+	if new_vhs_correct != is_vhs_correct:
+		is_vhs_correct = new_vhs_correct
+		_update_indicators("vhs", is_vhs_correct)
+	
+	# Рассчитываем качество для каждого типа эффектов
+	current_quality_noise = _calculate_quality_noise()
+	current_quality_vhs = _calculate_quality_vhs()
+	
+	# === ЭФФЕКТЫ БЕЛОГО ШУМА (управляются левой ручкой) ===
+	var max_noise = 2.35
+	var min_noise = 0.01
+	var final_noise = lerp(max_noise, min_noise, current_quality_noise)
+	
+	var max_noise_speed = 2.0
+	var min_noise_speed = 0.3
+	var final_noise_speed = lerp(max_noise_speed, min_noise_speed, current_quality_noise)
+	
+	# Обесцвечивание (усиливается при плохом качестве шума)
+	var desaturate_factor = 1.0 - current_quality_noise
+	shader_material.set_shader_parameter("desaturate_start", 0.05 + desaturate_factor * 0.15)
+	shader_material.set_shader_parameter("desaturate_end", 0.15 + desaturate_factor * 0.25)
+	
+	# === ЭФФЕКТЫ VHS (управляются правой ручкой) ===
+	var max_vhs = 0.4
+	var min_vhs = 0.01
+	var final_vhs = lerp(max_vhs, min_vhs, current_quality_vhs)
+	
+	var max_jitter = 0.035
+	var min_jitter = 0.001
+	var final_jitter = lerp(max_jitter, min_jitter, current_quality_vhs)
+	
+	var max_bleed = 0.025
+	var min_bleed = 0.001
+	var final_bleed = lerp(max_bleed, min_bleed, current_quality_vhs)
+	
+	var max_scanline = 0.25
+	var min_scanline = 0.01
+	var final_scanline = lerp(max_scanline, min_scanline, current_quality_vhs)
+	
+	# Применяем все параметры к шейдеру
+	shader_material.set_shader_parameter("noise_strength", final_noise)
+	shader_material.set_shader_parameter("noise_speed", final_noise_speed)
+	
+	shader_material.set_shader_parameter("vhs_strength", final_vhs)
+	shader_material.set_shader_parameter("jitter_amount", final_jitter)
+	shader_material.set_shader_parameter("color_bleed", final_bleed)
+	shader_material.set_shader_parameter("scanline_intensity", final_scanline)
 
 func _on_white_noise_changed(value: float, is_correct: bool) -> void:
-	noise_strength = value
-	noise_speed = value
+	current_noise_value = value
+	_apply_effects()
 	
-	is_white_noise_correct = is_correct 
-
-	if is_white_noise_correct:
-		$TvBorder/WhiteNoiseGreenLight.visible = true
-		$TvBorder/WhiteNoiseRedLight.visible = false
-	else:
-		$TvBorder/WhiteNoiseGreenLight.visible = false
-		$TvBorder/WhiteNoiseRedLight.visible = true
-
 	if is_white_noise_correct and is_vhs_correct:
-		print("who hoo!")
+		_complete_puzzle()
 
 func _on_vhs_changed(value: float, is_correct: bool) -> void:
-	vhs_strength = value
-	jitter_amount = value
-	color_bleed = value
-	scanline_intensity = value
+	current_vhs_value = value
+	_apply_effects()
 	
-	if is_vhs_correct:
-		$TvBorder/VhsGreenLight.visible = true
-		$TvBorder/VhsRedLight.visible = false
-	else:
-		$TvBorder/VhsGreenLight.visible = false
-		$TvBorder/VhsRedLight.visible = true
-
-	is_vhs_correct = is_correct
 	if is_white_noise_correct and is_vhs_correct:
-		print("who hoo!")
+		_complete_puzzle()
+
+func _update_indicators(knob_type: String, is_correct: bool) -> void:
+	match knob_type:
+		"white_noise":
+			$TvBorder/WhiteNoiseGreenLight.visible = is_correct
+			$TvBorder/WhiteNoiseRedLight.visible = not is_correct
+		"vhs":
+			$TvBorder/VhsGreenLight.visible = is_correct
+			$TvBorder/VhsRedLight.visible = not is_correct
+
+func _complete_puzzle() -> void:
+	print("✅ Puzzle complete! TV настроен правильно!")
+	_celebrate_success()
+	puzzle_completed.emit()
+
+func _celebrate_success() -> void:
+	var tween = create_tween()
+	tween.tween_method(_fade_out_effects, 1.0, 0.0, 1.0)
+
+func _fade_out_effects(factor: float) -> void:
+	if shader_material:
+		shader_material.set_shader_parameter("noise_strength", 0.01 * (1.0 - factor))
+		shader_material.set_shader_parameter("vhs_strength", 0.01 * (1.0 - factor))
+		shader_material.set_shader_parameter("jitter_amount", 0.001 * (1.0 - factor))
+		shader_material.set_shader_parameter("color_bleed", 0.001 * (1.0 - factor))
+		shader_material.set_shader_parameter("scanline_intensity", 0.01 * (1.0 - factor))
+
+func reset_puzzle() -> void:
+	is_white_noise_correct = false
+	is_vhs_correct = false
 	
+	if $TvBorder/WhiteNoiseKnob.has_method("reset_dialogue"):
+		$TvBorder/WhiteNoiseKnob.reset_dialogue()
+	if $TvBorder/VhsKnob.has_method("reset_dialogue"):
+		$TvBorder/VhsKnob.reset_dialogue()
+	
+	_update_indicators("white_noise", false)
+	_update_indicators("vhs", false)
+	
+	current_noise_value = initial_params
+	current_vhs_value = initial_params
+	_apply_effects()
+
+func _process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_F3):
+		print("=== ОТЛАДКА ===")
+		print("White Noise: %.3f | Зелёная зона: %.2f-%.2f | ✅: %s | Качество: %d%%" % [
+			current_noise_value, white_noise_min_correct, white_noise_max_correct, 
+			is_white_noise_correct, current_quality_noise * 100
+		])
+		print("VHS: %.3f | Зелёная зона: %.2f-%.2f | ✅: %s | Качество: %d%%" % [
+			current_vhs_value, vhs_min_correct, vhs_max_correct, 
+			is_vhs_correct, current_quality_vhs * 100
+		])

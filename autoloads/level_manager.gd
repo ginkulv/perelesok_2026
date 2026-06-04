@@ -12,34 +12,18 @@ func _ready() -> void:
 	for i in range(1, num_of_levels + 1):
 		level_paths.append("res://levels/level" + str(i) + "/level" + str(i) + ".tscn")
 		level_names.append("Level" + str(i))
-	for i in range(1, num_of_levels + 1):
-		level_paths.append("res://levels/level" + str(i) + "/level" + str(i) + ".tscn")
-		level_names.append("Level" + str(i))
-
 
 func go_to_next_level() -> void:
-	# Проверяем, есть ли следующий уровень
-	if index + 1 >= level_paths.size():
-		print("🏆 ИГРА ПРОЙДЕНА! Все уровни завершены.")
-		return
-	
-	# Удаляем текущий уровень (если он существует)
-	if current_level:
-		current_level.queue_free()
-		await current_level.tree_exited
-	
-	# Переходим к следующему уровню
+	get_tree().root.get_node(level_names[index]).queue_free()
+	await get_tree().process_frame
+
 	index += 1
-	
-	# Загружаем и добавляем новый уровень
+
 	var level_scene = load(level_paths[index])
 	current_level = level_scene.instantiate()
 	get_tree().root.add_child(current_level)
-	
-	# Отправляем сигнал о смене уровня
+
 	level_changed.emit(level_paths[index - 1], level_paths[index])
-	
-	print("✅ Переход на уровень: ", level_paths[index])
 
 
 func go_to_prev_level() -> void:
