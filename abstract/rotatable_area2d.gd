@@ -20,7 +20,7 @@ func _ready() -> void:
 func update_rotation(drag_offset: Vector2) -> void:
     print(drag_offset.y)
     var add_rotation = clamp(-max_rotation_speed, drag_offset.y * 0.8, max_rotation_speed)
-    rotation_degrees = clamp(min_rotation_deg, rotation_degrees + add_rotation, max_rotation_deg)
+    rotation_degrees = clamp(min_rotation_deg, rotation_degrees - add_rotation, max_rotation_deg)
     
     if rotation_degrees < first_threshold_deg:
         value = (first_threshold_deg - rotation_degrees) * deg_to_val_ratio
