@@ -5,8 +5,9 @@ extends Node2D
 func _ready() -> void:
     message_node.visible = false
     message_node.item_clicked.connect(_on_message_area_clicked)
+    MessageManager.message_shown.connect(_on_show_message)
 
-func show_message(message: String) -> void:
+func _on_show_message(message: String) -> void:
     $PlayerMessageArea2D/RichTextLabel.text = message
     message_node.visible = true
 

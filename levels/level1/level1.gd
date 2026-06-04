@@ -11,9 +11,9 @@ extends Node
     $JigsawFragment9.name: Vector2(496, 404),
 }
 
-func _ready() -> void:
-    MessageManager.message_shown.connect(_on_message_shown)
+@export var pull_distance: float = 100.0
 
+func _ready() -> void:
     $JigsawFragment2.drag_ended.connect(_on_jigsaw_placed)
     $JigsawFragment3.drag_ended.connect(_on_jigsaw_placed)
     $JigsawFragment4.drag_ended.connect(_on_jigsaw_placed)
@@ -22,22 +22,10 @@ func _ready() -> void:
     $JigsawFragment7.drag_ended.connect(_on_jigsaw_placed)
     $JigsawFragment8.drag_ended.connect(_on_jigsaw_placed)
     $JigsawFragment9.drag_ended.connect(_on_jigsaw_placed)
-    LevelManager.level_changed.connect(_on_level_changed)
-
-
-func _on_level_changed(level_from: String, level_to: String) -> void:
-    if level_to == self.name:
-        $JigsawFragment.drag_ended.connect(_on_jigsaw_placed)
-    elif level_from == self.name:
-        MessageManager.message_shown.disconnect(_on_message_shown)
-
 
 func _on_jigsaw_placed(item: DraggableArea2D, pos: Vector2) -> void:
     var item_name = item.name
-    if pos.distance_to(expected_pos[item_name]) < 100:
+    if pos.distance_to(expected_pos[item_name]) < pull_distance:
         item.position = expected_pos[item_name]
         item.can_drag = false
         MessageManager.emit_message_by_id("1")
-
-func _on_message_shown(message) -> void:
-    $Character.show_message(message)
