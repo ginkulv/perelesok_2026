@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cxfki626kjfhh"]
 
 [ext_resource type="Script" uid="uid://c8dcdeme538tb" path="res://levels/level5/level5.gd" id="1_mph5u"]
-[ext_resource type="Texture2D" uid="uid://dojok23fttowk" path="res://assets/images/Atlas/KARTINA.tres" id="2_ka2o7"]
-[ext_resource type="Texture2D" uid="uid://cb4s17n3rs8sh" path="res://assets/images/Atlas/lampa_potolok.tres" id="3_88x3w"]
 [ext_resource type="PackedScene" uid="uid://cm7tu3hfdfwxj" path="res://character/character.tscn" id="4_l1r1r"]
 [ext_resource type="PackedScene" uid="uid://btt1apirlk52v" path="res://levels/level4/level4.tscn" id="5_ka2o7"]
 
@@ -10,16 +8,8 @@
 script = ExtResource("1_mph5u")
 last_message_text = "Ура"
 
-[node name="Kartina" type="Sprite2D" parent="." unique_id=1926334726]
-position = Vector2(519, 723)
-texture = ExtResource("2_ka2o7")
-
-[node name="LampaPotolok" type="Sprite2D" parent="." unique_id=1226566424]
-position = Vector2(882, 113)
-texture = ExtResource("3_88x3w")
-
 [node name="Character" parent="." unique_id=197201290 instance=ExtResource("4_l1r1r")]
-position = Vector2(1632, 916)
+position = Vector2(194, 805)
 
 [node name="Level4" parent="." unique_id=1251460109 instance=ExtResource("5_ka2o7")]
 scale = Vector2(0.015, 0.015)
