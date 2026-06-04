@@ -237,7 +237,7 @@ func _complete_puzzle() -> void:
 	puzzle_completed.emit()
 	
 	# Небольшая задержка перед переходом
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(5.5).timeout
 	LevelManager.go_to_next_level()
 
 func _celebrate_success() -> void:
