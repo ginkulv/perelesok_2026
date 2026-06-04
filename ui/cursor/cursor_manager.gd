@@ -142,6 +142,11 @@ func _start_rotate() -> void:
 
 func _end_rotate() -> void:
 	print("end rotate " + str(cursor_pos) + ", " + top_piece.to_string())
+	
+	# Вызываем метод завершения вращения у ручки
+	if rotated_item and rotated_item.has_method("end_rotation"):
+		rotated_item.end_rotation()
+	
 	rotated_item = null
 	cursor_pos = rotation_pos
 	cursor_sprite.position = cursor_pos

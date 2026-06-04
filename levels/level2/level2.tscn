@@ -199,6 +199,7 @@ scale = Vector2(0.72, 0.72)
 
 [node name="Note" parent="." unique_id=1552927014 instance=ExtResource("14_tlj67")]
 position = Vector2(1134, 829)
+note_id = 1
 
 [node name="KartinaPyle" type="Sprite2D" parent="." unique_id=1252074879]
 position = Vector2(961.5, 548.5)

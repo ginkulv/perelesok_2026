@@ -21,36 +21,36 @@ var current_quality_vhs: float = 1.0
 var is_white_noise_correct: bool = false
 var is_vhs_correct: bool = false
 
+# Новые переменные для отслеживания вращения
+var is_white_knob_being_rotated: bool = false
+var is_vhs_knob_being_rotated: bool = false
+var has_been_in_green_zone: bool = false  # Флаг что игрок уже был в зеленой зоне
+
 signal puzzle_completed()
 signal setting_changed(setting_name: String, value: float)
 
 func _ready() -> void:
 	AudioManager.play_music(load("res://assets/music/телефизор.mp3"))
-	MessageManager.start_from_text("Ты еще тут? Мне показалось, что ты пропал",true)
+	MessageManager.start_from_text("Ты еще тут? Мне показалось, что ты пропал", true)
+	
 	# Создаем шейдерный материал
 	var shader = room_background_sprite.material.shader
 	shader_material = room_background_sprite.material
 	shader_material.shader = shader
 	
-	# Устанавливаем начальные параметры (минимальные эффекты)
-	#shader_material.set_shader_parameter("noise_strength", 0.3)
-	#shader_material.set_shader_parameter("noise_speed", 2.5)
-	#shader_material.set_shader_parameter("desaturate_start", 0.08)
-	#shader_material.set_shader_parameter("desaturate_end", 0.25)
-	#
-	#shader_material.set_shader_parameter("vhs_strength", 0.5)
-	#shader_material.set_shader_parameter("jitter_amount", 0.05)
-	#shader_material.set_shader_parameter("color_bleed", 0.001)
-	#shader_material.set_shader_parameter("scanline_intensity", 0.041)
-
-	#room_background_sprite.material = shader_material
-
 	# Подключаем сигналы
 	var white_knob = $TvBorder/WhiteNoiseKnob
 	var vhs_knob = $TvBorder/VhsKnob
 	
 	white_knob.value_changed.connect(_on_white_noise_changed)
 	vhs_knob.value_changed.connect(_on_vhs_changed)
+	
+	# Подключаем сигналы начала и конца вращения
+	white_knob.rotation_started.connect(_on_white_knob_rotation_started)
+	white_knob.rotation_ended.connect(_on_white_knob_rotation_ended)
+	
+	vhs_knob.rotation_started.connect(_on_vhs_knob_rotation_started)
+	vhs_knob.rotation_ended.connect(_on_vhs_knob_rotation_ended)
 
 	$TvBorder/WhiteNoiseGreenLight.visible = false
 	$TvBorder/VhsGreenLight.visible = false
@@ -81,6 +81,46 @@ func _on_white_knob_rotated() -> void:
 
 func _on_vhs_knob_rotated() -> void:
 	AudioManager.play_sfx("крутим крутилки.mp3", 0.3)
+
+# Новые обработчики начала/конца вращения
+func _on_white_knob_rotation_started() -> void:
+	is_white_knob_being_rotated = true
+	print("🔘 Белая ручка начали крутить")
+
+func _on_white_knob_rotation_ended() -> void:
+	is_white_knob_being_rotated = false
+	print("🔘 Белая ручку отпустили")
+	_check_puzzle_completion()  # Проверяем когда отпустили
+
+func _on_vhs_knob_rotation_started() -> void:
+	is_vhs_knob_being_rotated = true
+	print("🔘 VHS ручку начали крутить")
+
+func _on_vhs_knob_rotation_ended() -> void:
+	is_vhs_knob_being_rotated = false
+	print("🔘 VHS ручку отпустили")
+	_check_puzzle_completion()  # Проверяем когда отпустили
+
+func _check_puzzle_completion() -> void:
+	# Проверяем: обе ручки в зеленой зоне И их не крутят
+	if is_white_noise_correct and is_vhs_correct:
+		if not is_white_knob_being_rotated and not is_vhs_knob_being_rotated:
+			if not has_been_in_green_zone:
+				# Первый раз попали в зеленую зону и отпустили
+				has_been_in_green_zone = true
+				MessageManager.show_text("Ну вот, кажется, что-то получилось
+Тебе хорошо видно? А другим тоже будет видно?")
+				_complete_puzzle()
+		else:
+			if has_been_in_green_zone:
+				# Игрок снова начал крутить после того как уже было правильно
+				has_been_in_green_zone = false
+				print("⚠️ Игрок снова крутит ручки, сброс флага завершения")
+	else:
+		# Если вышли из зеленой зоны - сбрасываем флаг
+		if has_been_in_green_zone:
+			has_been_in_green_zone = false
+			print("🟡 Выход из зеленой зоны, флаг сброшен")
 
 func _calculate_quality_noise() -> float:
 	# Качество для шума (0-1)
@@ -121,10 +161,14 @@ func _apply_effects() -> void:
 	if new_white_correct != is_white_noise_correct:
 		is_white_noise_correct = new_white_correct
 		_update_indicators("white_noise", is_white_noise_correct)
+		# Когда статус меняется, проверяем завершение
+		_check_puzzle_completion()
 	
 	if new_vhs_correct != is_vhs_correct:
 		is_vhs_correct = new_vhs_correct
 		_update_indicators("vhs", is_vhs_correct)
+		# Когда статус меняется, проверяем завершение
+		_check_puzzle_completion()
 	
 	# Рассчитываем качество для каждого типа эффектов
 	current_quality_noise = _calculate_quality_noise()
@@ -173,16 +217,10 @@ func _apply_effects() -> void:
 func _on_white_noise_changed(value: float, is_correct: bool) -> void:
 	current_noise_value = value
 	_apply_effects()
-	
-	if is_white_noise_correct and is_vhs_correct:
-		_complete_puzzle()
 
 func _on_vhs_changed(value: float, is_correct: bool) -> void:
 	current_vhs_value = value
 	_apply_effects()
-	
-	if is_white_noise_correct and is_vhs_correct:
-		_complete_puzzle()
 
 func _update_indicators(knob_type: String, is_correct: bool) -> void:
 	match knob_type:
@@ -197,6 +235,10 @@ func _complete_puzzle() -> void:
 	print("✅ Puzzle complete! TV настроен правильно!")
 	_celebrate_success()
 	puzzle_completed.emit()
+	
+	# Небольшая задержка перед переходом
+	await get_tree().create_timer(1.5).timeout
+	LevelManager.go_to_next_level()
 
 func _celebrate_success() -> void:
 	var tween = create_tween()
@@ -213,6 +255,9 @@ func _fade_out_effects(factor: float) -> void:
 func reset_puzzle() -> void:
 	is_white_noise_correct = false
 	is_vhs_correct = false
+	has_been_in_green_zone = false
+	is_white_knob_being_rotated = false
+	is_vhs_knob_being_rotated = false
 	
 	if $TvBorder/WhiteNoiseKnob.has_method("reset_dialogue"):
 		$TvBorder/WhiteNoiseKnob.reset_dialogue()
@@ -229,11 +274,12 @@ func reset_puzzle() -> void:
 func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_F3):
 		print("=== ОТЛАДКА ===")
-		print("White Noise: %.3f | Зелёная зона: %.2f-%.2f | ✅: %s | Качество: %d%%" % [
+		print("White Noise: %.3f | Зелёная зона: %.2f-%.2f | ✅: %s | Качество: %d%% | Крутят: %s" % [
 			current_noise_value, white_noise_min_correct, white_noise_max_correct, 
-			is_white_noise_correct, current_quality_noise * 100
+			is_white_noise_correct, current_quality_noise * 100, is_white_knob_being_rotated
 		])
-		print("VHS: %.3f | Зелёная зона: %.2f-%.2f | ✅: %s | Качество: %d%%" % [
+		print("VHS: %.3f | Зелёная зона: %.2f-%.2f | ✅: %s | Качество: %d%% | Крутят: %s" % [
 			current_vhs_value, vhs_min_correct, vhs_max_correct, 
-			is_vhs_correct, current_quality_vhs * 100
+			is_vhs_correct, current_quality_vhs * 100, is_vhs_knob_being_rotated
 		])
+		print("Обе в зеленой зоне и не крутят: ", is_white_noise_correct and is_vhs_correct and not is_white_knob_being_rotated and not is_vhs_knob_being_rotated)

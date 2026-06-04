@@ -17,9 +17,13 @@ class_name RotatableArea2D
 
 var value: float = 0
 var noise_audio: AudioStreamPlayer = null
+var _is_being_rotated: bool = false  # Флаг что ручку сейчас крутят
 
+# Сигналы
 signal value_changed(value: float, is_correct: bool)
-signal rotated()  # Добавлен сигнал для совместимости
+signal rotated()  # Сигнал для звука вращения
+signal rotation_started()  # НОВЫЙ СИГНАЛ: начали крутить
+signal rotation_ended()    # НОВЫЙ СИГНАЛ: закончили крутить
 
 func _ready() -> void:
 	add_to_group("rotatable_item")
@@ -36,6 +40,12 @@ func _find_noise_source() -> void:
 		print("⚠️ AudioStreamPlayer не найден в дочерних узлах")
 
 func update_rotation(drag_offset: Vector2) -> void:
+	# Если начали вращать первый раз в этом движении
+	if not _is_being_rotated:
+		_is_being_rotated = true
+		rotation_started.emit()  # Эмитим сигнал начала вращения
+		print("🔄 ", name, " начали крутить")
+	
 	var add_rotation = clamp(-max_rotation_speed, drag_offset.y * 0.8, max_rotation_speed)
 	rotation_degrees = clamp(min_rotation_deg, rotation_degrees + add_rotation, max_rotation_deg)
 	
@@ -55,6 +65,13 @@ func update_rotation(drag_offset: Vector2) -> void:
 	# Эмитируем сигналы
 	value_changed.emit(value, rotation_degrees >= first_threshold_deg and rotation_degrees <= second_threshold_deg)
 	rotated.emit()  # Эмитируем сигнал для звука
+
+# НОВЫЙ МЕТОД: вызывается когда игрок отпустил ручку
+func end_rotation() -> void:
+	if _is_being_rotated:
+		_is_being_rotated = false
+		rotation_ended.emit()  # Эмитим сигнал окончания вращения
+		print("🔄 ", name, " отпустили")
 
 func _update_noise_volume() -> void:
 	if noise_audio == null:
@@ -83,9 +100,10 @@ func _update_noise_volume() -> void:
 		
 		noise_audio.volume_db = clamp(volume, min_noise_volume, max_noise_volume)
 
-# Добавлен метод для сброса (если нужен)
+# Метод для сброса (если нужен)
 func reset_dialogue() -> void:
 	rotation_degrees = min_rotation_deg
 	value = 0.0
+	_is_being_rotated = false
 	_update_noise_volume()
 	value_changed.emit(value, false)

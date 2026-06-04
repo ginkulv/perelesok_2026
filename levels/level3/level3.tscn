@@ -108,7 +108,7 @@ scale = Vector2(0.735, 0.735)
 
 [node name="Note" parent="." unique_id=1552927014 instance=ExtResource("13_sl4p2")]
 position = Vector2(1210, 790)
-note_id = 1
+note_id = 2
 
 [node name="shader" type="Sprite2D" parent="." unique_id=524915864]
 material = SubResource("ShaderMaterial_jvs16")
