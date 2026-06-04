@@ -28,4 +28,5 @@ func open() -> void:
 func close() -> void:
     GameState.change_state(GameState.PLAYING)
     CursorManager.invert_x = invert_x
+    get_tree().paused = false
     hide()
