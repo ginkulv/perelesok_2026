@@ -78,19 +78,19 @@ var note: Array = [
 ]
 
 #это не обязательно 
-var event_messages: Dictionary = {
-    "first_piece": "Один кусочек на месте...",
-    "half_piece": "Половина готова!",
-    "last_piece": "Остался последний...",
-    "puzzle_complete": "Получилось! Все выглядит совсем как раньше",
-    "piece_placed": "Кусочек встал на место!",
-    "full_complete": "Ты собрал все!",
-    "dust_cleaned": "Картина теперь чистая!",
-    "lamp_on": "В комнате стало светлее...",
-    "items_placed": "Чайник и чашка на месте, теперь можно поставить диван",
-    "sofa_placed": "Диван на месте! Комната обустроена.",
-    "puzzle2_complete": "Отлично! Комната полностью обустроена. Пора идти дальше!",
-}
+#var event_messages: Dictionary = {
+    #"first_piece": "Один кусочек на месте...",
+    #"half_piece": "Половина готова!",
+    #"last_piece": "Остался последний...",
+    #"puzzle_complete": "Получилось! Все выглядит совсем как раньше",
+    #"piece_placed": "Кусочек встал на место!",
+    #"full_complete": "Ты собрал все!",
+    #"dust_cleaned": "Картина теперь чистая!",
+    #"lamp_on": "В комнате стало светлее...",
+    #"items_placed": "Чайник и чашка на месте, теперь можно поставить диван",
+    #"sofa_placed": "Диван на месте! Комната обустроена.",
+    #"puzzle2_complete": "Отлично! Комната полностью обустроена. Пора идти дальше!",
+
 
 
 var dialogue_list: Array[String] = []
@@ -215,16 +215,16 @@ func next_message() -> void:
     else:
         print("🏁 Все диалоги показаны")
 
-func show_event(event_key: String, auto_hide_delay: float = 2.0) -> void:
-    if event_messages.has(event_key):
-        var message = event_messages[event_key]
-        print("🎯 [", event_key, "] ", message)
-        message_shown.emit(message)
+#func show_event(event_key: String, auto_hide_delay: float = 2.0) -> void:
+    #if event_messages.has(event_key):
+        #var message = event_messages[event_key]
+       # print("🎯 [", event_key, "] ", message)
+        #message_shown.emit(message)
         
         # Автоматически скрыть через delay секунд
-        _start_auto_hide_timer(auto_hide_delay)
-    else:
-        print("⚠️ Событие не найдено: ", event_key)
+        #_start_auto_hide_timer(auto_hide_delay)
+    #else:
+        #print("⚠️ Событие не найдено: ", event_key)
 
 var _hide_timer: Timer = null
 

@@ -92,12 +92,12 @@ func _on_jigsaw_placed(item: Area2D, pos: Vector2) -> void:
         print("✅ Собрано: ", pieces_placed, "/", total_pieces)
         
         # 👇 КРАСИВЫЕ ВЫЗОВЫ С СОБЫТИЯМИ
-        if pieces_placed == 1:
-            MessageManager.show_event("first_piece")
-        elif pieces_placed == total_pieces / 2:
-            MessageManager.show_event("half_piece")
-        elif pieces_placed == total_pieces - 1:
-            MessageManager.show_event("last_piece")
+        #if pieces_placed == 1:
+            #MessageManager.show_event("first_piece")
+        #elif pieces_placed == total_pieces / 2:
+            #MessageManager.show_event("half_piece")
+        #elif pieces_placed == total_pieces - 1:
+            #MessageManager.show_event("last_piece")
         
         if pieces_placed >= total_pieces:
             _on_puzzle_complete()
@@ -117,7 +117,7 @@ func _on_puzzle_complete() -> void:
         var tween = create_tween()
         tween.tween_property($PhotoBackground, "modulate:a", 1.0, 0.8)
     
-    MessageManager.show_event("puzzle_complete")
+    #MessageManager.show_event("puzzle_complete")
     
     await get_tree().create_timer(3.5).timeout
     
