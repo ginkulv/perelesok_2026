@@ -33,12 +33,16 @@ var event_messages: Dictionary = {
     "last_piece": "Остался последний...",
     "puzzle_complete": "Получилось! Все выглядит совсем как раньше",
     "piece_placed": "Кусочек встал на место!",
+<<<<<<< HEAD
     "full_complete": "Ты собрал все!",
     "dust_cleaned": "Картина теперь чистая!",
     "lamp_on": "В комнате стало светлее...",
     "items_placed": "Чайник и чашка на месте, теперь можно поставить диван",
     "sofa_placed": "Диван на месте! Комната обустроена.",
     "puzzle2_complete": "Отлично! Комната полностью обустроена. Пора идти дальше!",
+=======
+    "full_complete": "Ты собрал все!"
+>>>>>>> 1f8cb91d84d7df3994954b15e292270a057ce6ee
 }
 
 
@@ -67,11 +71,16 @@ func next_message() -> void:
     else:
         print("🏁 Все диалоги показаны")
 
+<<<<<<< HEAD
 func show_event(event_key: String, auto_hide_delay: float = 2.0) -> void:
+=======
+func show_event(event_key: String) -> void:
+>>>>>>> 1f8cb91d84d7df3994954b15e292270a057ce6ee
     if event_messages.has(event_key):
         var message = event_messages[event_key]
         print("🎯 [", event_key, "] ", message)
         message_shown.emit(message)
+<<<<<<< HEAD
         
         # Автоматически скрыть через delay секунд
         _start_auto_hide_timer(auto_hide_delay)
@@ -102,6 +111,10 @@ func _on_auto_hide_timeout() -> void:
     #print("📢 [manual] ", text)
     #message_shown.emit(text)
     #_start_auto_hide_timer(auto_hide_delay)
+=======
+    else:
+        print("⚠️ Событие не найдено: ", event_key)
+>>>>>>> 1f8cb91d84d7df3994954b15e292270a057ce6ee
 
 func show_text(text: String) -> void:
     print("📢 [manual] ", text)
@@ -109,6 +122,7 @@ func show_text(text: String) -> void:
 
 func hide_message() -> void:
     message_shown.emit("")
+<<<<<<< HEAD
 
 func start_from_index(index: int) -> bool:
     if index >= 0 and index < dialogue_list.size():
@@ -121,6 +135,8 @@ func start_from_index(index: int) -> bool:
 
 # Пример использования:
 # start_from_index(3)  # Начнёт с 4-го сообщения
+=======
+>>>>>>> 1f8cb91d84d7df3994954b15e292270a057ce6ee
 
 func reset_dialogue() -> void:
     current_index = 0
