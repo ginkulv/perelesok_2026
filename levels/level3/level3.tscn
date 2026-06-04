@@ -18,6 +18,11 @@ radius = 52.773098
 [node name="Level3" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_ptmi2")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1626140412]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
 [node name="RoomBackground" type="Sprite2D" parent="." unique_id=1189082140]
 position = Vector2(960.00006, 600.00006)
 scale = Vector2(0.75000006, 0.75000006)
