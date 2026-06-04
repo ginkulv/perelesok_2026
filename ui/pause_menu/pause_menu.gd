@@ -5,27 +5,27 @@ extends CanvasLayer
 var invert_x: bool = false
 
 func _ready() -> void:
-    invert_x = CursorManager.invert_x
-    CursorManager.invert_x = false
+	invert_x = CursorManager.invert_x
+	CursorManager.invert_x = false
 
 func _on_resume_button_button_up() -> void:
-    close()
+	close()
 
 func _on_settings_button_button_up() -> void:
-    var settings = settings_scene.instantiate()
-    add_child(settings)
-    await settings.settings_closed
+	var settings = settings_scene.instantiate()
+	add_child(settings)
+	await settings.settings_closed
 
 func _on_exit_button_up() -> void:
-    get_tree().quit()
+	get_tree().quit()
 
 func open() -> void:
-    invert_x = CursorManager.invert_x
-    CursorManager.invert_x = false
-    get_tree().paused = true
-    show()
+	invert_x = CursorManager.invert_x
+	CursorManager.invert_x = false
+	get_tree().paused = true
+	show()
 
 func close() -> void:
-    GameState.change_state(GameState.PLAYING)
-    CursorManager.invert_x = invert_x
-    hide()
+	GameState.change_state(GameState.PLAYING)
+	CursorManager.invert_x = invert_x
+	hide()

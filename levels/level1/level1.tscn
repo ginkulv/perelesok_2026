@@ -14,12 +14,15 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_aatsp")
 
 [node name="JigsawFragment2" parent="." unique_id=1390962387 instance=ExtResource("1_eq150")]
-position = Vector2(441, 340)
+position = Vector2(740, 362)
 
 [node name="JigsawFragment1" parent="." unique_id=1428799320 instance=ExtResource("1_eq150")]
 z_index = 1
-position = Vector2(437, 489)
+position = Vector2(655, 619)
 priority = 1
 
 [node name="Character" parent="." unique_id=197201290 instance=ExtResource("3_ps0pm")]
+position = Vector2(1652, 850)
+
+[node name="Character2" parent="." unique_id=507703542 instance=ExtResource("3_ps0pm")]
 position = Vector2(1652, 850)

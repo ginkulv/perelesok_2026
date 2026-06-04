@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dmpet1vne0bkd"]
+
+[ext_resource type="Shader" uid="uid://eemxuwv7uahc" path="res://debug/CleanImage/CleanImage.gdshader" id="1_yotwk"]
+[ext_resource type="Script" uid="uid://cm1401qiu1jd0" path="res://debug/CleanImage/clean_image.gd" id="2_j6bit"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ti5fa"]
+shader = ExtResource("1_yotwk")
+shader_parameter/mouse_pos = Vector2(0, 0)
+shader_parameter/radius = 50.0
+
+[node name="CleanImage" type="Node2D" unique_id=257488263]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=573170931]
+material = SubResource("ShaderMaterial_ti5fa")
+script = ExtResource("2_j6bit")

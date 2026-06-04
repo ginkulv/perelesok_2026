@@ -22,6 +22,14 @@ shape = SubResource("RectangleShape2D_hx151")
 scale = Vector2(0.15111111, 0.610664)
 texture = ExtResource("2_ugqs2")
 
+[node name="Placeholder2" type="Sprite2D" parent="CharacterBody2D" unique_id=1305886360]
+scale = Vector2(0.15111111, 0.610664)
+texture = ExtResource("2_ugqs2")
+
+[node name="Placeholder3" type="Sprite2D" parent="CharacterBody2D" unique_id=1604724298]
+scale = Vector2(0.15111111, 0.610664)
+texture = ExtResource("2_ugqs2")
+
 [node name="PlayerMessageArea2D" type="Area2D" parent="." unique_id=1464497694]
 script = ExtResource("3_ugqs2")
 metadata/_custom_type_script = "uid://b7qr2cdibn3ep"
