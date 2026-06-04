@@ -1,6 +1,6 @@
 extends Node
 
-@onready var room_sprite = $RoomSprite
+@onready var room_background_sprite = $RoomBackground
 var material: ShaderMaterial
 
 @export var initial_params: float = 1.0
@@ -56,16 +56,27 @@ func _ready() -> void:
     color_bleed = initial_params
     scanline_intensity = initial_params
 
-    room_sprite.material = material
+    room_background_sprite.material = material
 
-    $Knob1.value_changed.connect(_on_white_noise_changed)
-    $Knob2.value_changed.connect(_on_vhs_changed)
+    $TvBorder/WhiteNoiseKnob.value_changed.connect(_on_white_noise_changed)
+    $TvBorder/VhsKnob.value_changed.connect(_on_vhs_changed)
+
+    $TvBorder/WhiteNoiseGreenLight.visible = false
+    $TvBorder/VhsGreenLight.visible = false
 
 func _on_white_noise_changed(value: float, is_correct: bool) -> void:
     noise_strength = value
     noise_speed = value
     
     is_white_noise_correct = is_correct 
+
+    if is_white_noise_correct:
+        $TvBorder/WhiteNoiseGreenLight.visible = true
+        $TvBorder/WhiteNoiseRedLight.visible = false
+    else:
+        $TvBorder/WhiteNoiseGreenLight.visible = false
+        $TvBorder/WhiteNoiseRedLight.visible = true
+
     if is_white_noise_correct and is_vhs_correct:
         print("who hoo!")
 
@@ -75,6 +86,13 @@ func _on_vhs_changed(value: float, is_correct: bool) -> void:
     color_bleed = value
     scanline_intensity = value
     
+    if is_vhs_correct:
+        $TvBorder/VhsGreenLight.visible = true
+        $TvBorder/VhsRedLight.visible = false
+    else:
+        $TvBorder/VhsGreenLight.visible = false
+        $TvBorder/VhsRedLight.visible = true
+
     is_vhs_correct = is_correct
     if is_white_noise_correct and is_vhs_correct:
         print("who hoo!")

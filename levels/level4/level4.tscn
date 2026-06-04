@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://7hgbnptmt4kw" path="res://levels/level4/props/note/note.gd" id="2_t5bou"]
 [ext_resource type="Texture2D" uid="uid://cr7j3i56f4il5" path="res://levels/level4/placeholder.jpg" id="2_xb5ex"]
 [ext_resource type="Script" uid="uid://b7qr2cdibn3ep" path="res://abstract/clickable_area2d.gd" id="4_hlj1s"]
-[ext_resource type="PackedScene" uid="uid://vm0tftkbv338" path="res://levels/level3/level3.tscn" id="5_jwckb"]
 [ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="6_hlj1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqpty"]
@@ -47,6 +46,3 @@ shape = SubResource("RectangleShape2D_mph5u")
 [node name="Sprite2D" type="Sprite2D" parent="CarpetArea2D" unique_id=878878005]
 position = Vector2(1218, 516)
 texture = ExtResource("2_xb5ex")
-
-[node name="Level3" parent="." unique_id=137414913 instance=ExtResource("5_jwckb")]
-scale = Vector2(0.1, 0.1)
