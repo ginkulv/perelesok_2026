@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
     if is_dragging and dragged_item:
         dragged_item.update_drag_position(cursor_pos + drag_offset)
     elif is_rotating and rotated_item:
-        drag_offset = rotated_item.position - cursor_pos
+        drag_offset = rotated_item.global_position - cursor_pos
         rotated_item.update_rotation(drag_offset)
 
 func _input(event: InputEvent) -> void:
@@ -81,11 +81,6 @@ func _input(event: InputEvent) -> void:
         cursor_sprite.position = cursor_pos
 
     if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-        print("---------------")
-        print("cursor_pos")
-        print(cursor_pos)
-        print("_get_world_position()")
-        print(_get_world_position())
         if event.pressed:
             # TODO этот код по сути сейчас нужен только для плашки дебага, потом поиск ui можно будет убрать, осталось от прошлой версии
             var ui_element = _get_ui_element_at_position(cursor_pos)
@@ -94,7 +89,7 @@ func _input(event: InputEvent) -> void:
                 ui_element.button_up.emit()
                 return
 
-            top_piece = _get_top_piece_at_position(_get_world_position())
+            top_piece = _get_top_piece_at_position(cursor_pos)
             if top_piece and top_piece is DraggableArea2D and top_piece.can_drag and dragged_item == null:
                 _start_drag()
             elif top_piece and top_piece is ClickableArea2D and clicked_item == null:
@@ -130,7 +125,7 @@ func _start_click() -> void:
 
 func _end_click() -> void:
     print("end click " + str(cursor_pos) + ", " + top_piece.to_string())
-    var cur_top_piece = _get_top_piece_at_position(_get_world_position())
+    var cur_top_piece = _get_top_piece_at_position(cursor_pos)
     if cur_top_piece == clicked_item:
         clicked_item.item_clicked.emit(clicked_item, cursor_pos)
     clicked_item = null
@@ -202,16 +197,3 @@ func _on_game_state_changed(_from_state: int, new_state: int) -> void:
         GameState.MAIN_MENU, GameState.PAUSE_MENU:
             print("enter_ui")
             _enter_ui()
-
-
-func _get_world_position() -> Vector2:
-    var cam = get_viewport().get_camera_2d()
-    var screen_center = get_viewport().size / 2.0
-    print("screen_center")
-    print(screen_center)
-    var cursor_offset = cursor_pos - screen_center
-    print("cursor_offset")
-    print(cursor_offset)
-    print("cam.zoom")
-    print(cam.zoom)
-    return cam.global_position + cursor_offset / cam.zoom
