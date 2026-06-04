@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var settings_scene = preload("res://ui/settings_menu/settings_menu.tscn")
+@onready var info_scene = preload("res://ui/info.tscn")
 
 func _ready():
     GameState.change_state(GameState.MAIN_MENU)
@@ -13,6 +14,12 @@ func _on_settings_button_button_up():
     var settings = settings_scene.instantiate()
     add_child(settings)
 
+
 func _on_play_button_button_up() -> void:
     GameState.change_state(GameState.PLAYING)
     get_tree().change_scene_to_file("res://levels/level1/level1.tscn")
+
+
+func _on_credits_button_button_up() -> void:
+    var info = info_scene.instantiate()
+    add_child(info)

@@ -78,19 +78,19 @@ var note: Array = [
 ]
 
 #это не обязательно 
-#var event_messages: Dictionary = {
-    #"first_piece": "Один кусочек на месте...",
-    #"half_piece": "Половина готова!",
-    #"last_piece": "Остался последний...",
-    #"puzzle_complete": "Получилось! Все выглядит совсем как раньше",
-    #"piece_placed": "Кусочек встал на место!",
-    #"full_complete": "Ты собрал все!",
-    #"dust_cleaned": "Картина теперь чистая!",
-    #"lamp_on": "В комнате стало светлее...",
-    #"items_placed": "Чайник и чашка на месте, теперь можно поставить диван",
-    #"sofa_placed": "Диван на месте! Комната обустроена.",
-    #"puzzle2_complete": "Отлично! Комната полностью обустроена. Пора идти дальше!",
-
+var event_messages: Dictionary = {
+    "first_piece": "Один кусочек на месте...",
+    "half_piece": "Половина готова!",
+    "last_piece": "Остался последний...",
+    "puzzle_complete": "Получилось! Все выглядит совсем как раньше",
+    "piece_placed": "Кусочек встал на место!",
+    "full_complete": "Ты собрал все!",
+    "dust_cleaned": "Картина теперь чистая!",
+    "lamp_on": "В комнате стало светлее...",
+    "items_placed": "Чайник и чашка на месте, теперь можно поставить диван",
+    "sofa_placed": "Диван на месте! Комната обустроена.",
+    "puzzle2_complete": "Отлично! Комната полностью обустроена. Пора идти дальше!",
+}
 
 
 var dialogue_list: Array[String] = []
@@ -191,8 +191,8 @@ func start_from_containing(text: String) -> bool:
     """
     return start_from_text(text, false)
 
-# Пример использования:
-# start_from_text("поможешь починить")  # Начнет с фразы содержащей "поможешь починить"
+#Пример использования:
+#start_from_text("поможешь починить")  # Начнет с фразы содержащей "поможешь починить"
 # start_from_text("Ура, получилось!", true)  # Начнет с точной фразы
 # show_specific_message("Спасибо")  # Покажет конкретную фразу, не меняя индекс
 
@@ -215,16 +215,16 @@ func next_message() -> void:
     else:
         print("🏁 Все диалоги показаны")
 
-#func show_event(event_key: String, auto_hide_delay: float = 2.0) -> void:
-    #if event_messages.has(event_key):
-        #var message = event_messages[event_key]
-       # print("🎯 [", event_key, "] ", message)
-        #message_shown.emit(message)
+func show_event(event_key: String, auto_hide_delay: float = 2.0) -> void:
+    if event_messages.has(event_key):
+        var message = event_messages[event_key]
+        print("🎯 [", event_key, "] ", message)
+        message_shown.emit(message)
         
         # Автоматически скрыть через delay секунд
-        #_start_auto_hide_timer(auto_hide_delay)
-    #else:
-        #print("⚠️ Событие не найдено: ", event_key)
+        _start_auto_hide_timer(auto_hide_delay)
+    else:
+        print("⚠️ Событие не найдено: ", event_key)
 
 var _hide_timer: Timer = null
 
@@ -244,14 +244,6 @@ func _start_auto_hide_timer(delay: float) -> void:
 func _on_auto_hide_timeout() -> void:
     hide_message()
     print("🔇 Событие автоматически скрыто")
-
-# Также модифицируем show_text для единообразия
-#func show_text(text: String, auto_hide_delay: float = 2.0) -> void:
-    #print("📢 [manual] ", text)
-    #message_shown.emit(text)
-    #_start_auto_hide_timer(auto_hide_delay)
-#    else:
- #       print("⚠️ Событие не найдено: ", event_key)
 
 func show_text(text: String) -> void:
     print("📢 [manual] ", text)

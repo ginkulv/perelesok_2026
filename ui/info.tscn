@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://d3x5ydg3mri4p"]
+
+[ext_resource type="FontFile" uid="uid://bwhkqpe753hy1" path="res://assets/fonts/Zeequada/Zeequada-Regular.otf" id="1_tphq3"]
+[ext_resource type="Script" uid="uid://b5ejqksnl4gln" path="res://ui/info.gd" id="1_xhkx0"]
+[ext_resource type="Texture2D" uid="uid://c3yiv441vu5ut" path="res://assets/images/Atlas/ui/menu_back_button.tres" id="3_f4xp4"]
+
+[node name="Info" type="CanvasLayer" unique_id=1526706484]
+script = ExtResource("1_xhkx0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2140871183]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0056611504, 0.0056611514, 0.00566115, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=71913689]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer" unique_id=1780262859]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+text = "Николай Гинкул - программирование, геймдизайн, нарратив
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/VBoxContainer" unique_id=453702150]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+text = "Елисей Синица - программирование, VFX
+"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="ColorRect/VBoxContainer" unique_id=1737592104]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+text = "Василий Гинкул - программирование
+"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ColorRect/VBoxContainer" unique_id=1461583915]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+text = "Вася Зайцева - нарратив
+"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="ColorRect/VBoxContainer" unique_id=1158403299]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+text = "mansla - ведущий художник, 2D-художник, UI
+"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="ColorRect/VBoxContainer" unique_id=617370542]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+text = "po lesu - музыка, саунд дизайн
+"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="ColorRect/VBoxContainer" unique_id=983323289]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="ColorRect/VBoxContainer" unique_id=1176391875]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+text = "Использованный шрифт:
+"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="ColorRect/VBoxContainer" unique_id=1648536234]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+text = "Zeequada, GNU GPL 3.0
+"
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="ColorRect/VBoxContainer" unique_id=766392440]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tphq3")
+theme_override_font_sizes/font_size = 30
+text = "Спасибо, что поиграли!
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer" unique_id=226117140]
+layout_mode = 2
+text = " "
+icon = ExtResource("3_f4xp4")
+icon_alignment = 1
+
+[connection signal="button_up" from="ColorRect/VBoxContainer/Button" to="." method="_on_button_button_up"]

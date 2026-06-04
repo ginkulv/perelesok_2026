@@ -9,7 +9,7 @@ var is_showing: bool = false
 func _ready() -> void:
     message_node.visible = false
     $CharacterBody2D/Placeholder.play("default")
-    message_node.item_clicked.connect(_on_message_area_clicked)
+    #message_node.item_clicked.connect(_on_message_area_clicked)
     
     # Подключаемся к глобальному MessageManager
     if MessageManager:
@@ -54,14 +54,10 @@ func _on_message_received(message: String) -> void:
     else:
         show_message(message)
 
-# Обработчик клика по сообщению (ускорение диалога)
-func _on_message_area_clicked(_item: ClickableArea2D, _pos: Vector2) -> void:
-    print("👆 Клик по сообщению - ускоряем диалог")
-    hide_message()
     
     # Показываем следующее сообщение
     if MessageManager and MessageManager.has_next():
-        await get_tree().create_timer(0.1).timeout
+        await get_tree().create_timer(4).timeout
         MessageManager.next_message()
 
 # Метод для вызова из анимации (если нужно)
