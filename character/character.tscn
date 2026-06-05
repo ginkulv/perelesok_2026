@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://gvv6asd26b86" path="res://assets/images/Atlas/character_idle_1.tres" id="3_tgjim"]
 [ext_resource type="Script" uid="uid://b7qr2cdibn3ep" path="res://abstract/clickable_area2d.gd" id="3_ugqs2"]
 [ext_resource type="Texture2D" uid="uid://c3wruvv5cxdme" path="res://assets/images/Atlas/character_idle_2.tres" id="4_wy5t8"]
+[ext_resource type="Texture2D" uid="uid://cojia10dmvc4s" path="res://assets/images/Atlas/character_hi_0.tres" id="5_hi0"]
 [ext_resource type="Texture2D" uid="uid://ddh5jg1i3tdr0" path="res://assets/images/Atlas/ui_dialogcloud_1.tres" id="6_dy06j"]
+[ext_resource type="Texture2D" uid="uid://cw40we6qd12d4" path="res://assets/images/Atlas/character_hi_1.tres" id="6_hi1"]
 [ext_resource type="FontFile" uid="uid://bwhkqpe753hy1" path="res://assets/fonts/Zeequada/Zeequada-Regular.otf" id="7_8brn5"]
 [ext_resource type="Script" uid="uid://dclk6re7ks6ys" path="res://character/random_sfx.gd" id="8_8brn5"]
 [ext_resource type="AudioStream" uid="uid://b8ciq8bkqo762" path="res://assets/sfx/вздох человечка.mp3" id="9_b4qc5"]
@@ -31,222 +33,21 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hi0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hi1")
+}],
+"loop": true,
+"name": &"goodbye",
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rvpn"]
 size = Vector2(406, 110)
-
-[sub_resource type="Animation" id="Animation_1dqym"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerMessageArea2D/Placeholder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-258.258, -332.75)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerMessageArea2D/Placeholder:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.4144813, 0.9624413)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerMessageArea2D/RichTextLabel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerMessageArea2D/Placeholder:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerMessageArea2D/RichTextLabel:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_6kuvt"]
-resource_name = "fade_in"
-length = 1.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerMessageArea2D/Placeholder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-301, -350), Vector2(-283, -357)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerMessageArea2D/Placeholder:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.13368985, 0.1455399), Vector2(1.457219, 1.0375587)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerMessageArea2D/RichTextLabel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0009999999, 0.26666668),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerMessageArea2D/Placeholder:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("random_sfx")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_random"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerMessageArea2D/RichTextLabel:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.26666668, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_6610h"]
-resource_name = "fade_out"
-length = 1.0333333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerMessageArea2D/Placeholder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-283, -357)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerMessageArea2D/Placeholder:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.457219, 1.0375587)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerMessageArea2D/RichTextLabel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.30100006),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerMessageArea2D/Placeholder:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerMessageArea2D/RichTextLabel:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.03333333, 0.26666668),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0shic"]
-_data = {
-&"RESET": SubResource("Animation_1dqym"),
-&"fade_in": SubResource("Animation_6kuvt"),
-&"fade_out": SubResource("Animation_6610h")
-}
 
 [node name="Character" type="Node2D" unique_id=197201290]
 script = ExtResource("1_1l1n4")
@@ -261,8 +62,7 @@ shape = SubResource("RectangleShape2D_hx151")
 position = Vector2(-3.999999, -5)
 scale = Vector2(0.912, 1)
 sprite_frames = SubResource("SpriteFrames_qkjfd")
-frame = 1
-frame_progress = 0.7879755
+frame_progress = 0.9365815
 
 [node name="PlayerMessageArea2D" type="Area2D" parent="." unique_id=1464497694]
 z_index = 30
@@ -284,7 +84,7 @@ offset_right = 223.0
 offset_bottom = -159.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("7_8brn5")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 37
 text = "sdfsdfadsfasdf"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -292,9 +92,6 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMessageArea2D" unique_id=964252358]
 position = Vector2(25, -215)
 shape = SubResource("RectangleShape2D_0rvpn")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1759574847]
-libraries/ = SubResource("AnimationLibrary_0shic")
 
 [node name="random_sfx" type="Node" parent="." unique_id=2039890576]
 script = ExtResource("8_8brn5")

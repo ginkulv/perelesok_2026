@@ -1,15 +1,26 @@
 [gd_scene format=3 uid="uid://cxfki626kjfhh"]
 
 [ext_resource type="Script" uid="uid://c8dcdeme538tb" path="res://levels/level5/level5.gd" id="1_mph5u"]
-[ext_resource type="PackedScene" uid="uid://cm7tu3hfdfwxj" path="res://character/character.tscn" id="4_l1r1r"]
-[ext_resource type="PackedScene" uid="uid://btt1apirlk52v" path="res://levels/level4/level4.tscn" id="5_ka2o7"]
+[ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="2_room"]
+[ext_resource type="PackedScene" uid="uid://cm7tu3hfdfwxj" path="res://character/character.tscn" id="3_char"]
+[ext_resource type="PackedScene" uid="uid://j1eiemujm72i" path="res://character/Note.tscn" id="4_note"]
+[ext_resource type="PackedScene" uid="uid://nj6shgfintl" path="res://ui/note_ui/note_ui_canvas.tscn" id="5_noteui"]
 
 [node name="Level5" type="Node2D" unique_id=47008913]
 script = ExtResource("1_mph5u")
-last_message_text = "Ура"
 
-[node name="Character" parent="." unique_id=197201290 instance=ExtResource("4_l1r1r")]
-position = Vector2(194, 805)
+[node name="RoomBackground" type="Sprite2D" parent="." unique_id=1436671113]
+position = Vector2(960, 600)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_room")
 
-[node name="Level4" parent="." unique_id=1251460109 instance=ExtResource("5_ka2o7")]
-scale = Vector2(0.015, 0.015)
+[node name="Character" parent="." unique_id=197201290 instance=ExtResource("3_char")]
+position = Vector2(640, 802)
+z_index = 10
+
+[node name="Note" parent="." unique_id=1552927014 instance=ExtResource("4_note")]
+position = Vector2(1210, 790)
+z_index = 12
+note_id = 4
+
+[node name="NoteUi" parent="." unique_id=701267839 instance=ExtResource("5_noteui")]

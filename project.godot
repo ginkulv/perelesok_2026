@@ -40,6 +40,10 @@ window/per_pixel_transparency/allowed=true
 movie_writer/movie_file="D:/OBS Vids/gnomejam.avi"
 movie_writer/disable_vsync=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [global_group]
 
 ui_elements=""

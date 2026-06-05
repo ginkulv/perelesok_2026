@@ -7,9 +7,45 @@
 [ext_resource type="Texture2D" uid="uid://bsltiila6mi2q" path="res://assets/images/Atlas/Room_Background.tres" id="6_hlj1s"]
 [ext_resource type="Texture2D" uid="uid://bs320rqhkuiih" path="res://assets/images/Atlas/kover_1.tres" id="6_jwckb"]
 [ext_resource type="Texture2D" uid="uid://cgqaw3xdwsftg" path="res://assets/images/Atlas/kover_2.tres" id="7_cj05o"]
+[ext_resource type="Script" uid="uid://bpwoeafigygf8" path="res://character/character.gd" id="8_ynuuj"]
+[ext_resource type="Texture2D" uid="uid://b1pr75bkhn105" path="res://assets/images/Atlas/character_idle_0.tres" id="9_5rfuc"]
+[ext_resource type="PackedScene" uid="uid://j1eiemujm72i" path="res://character/Note.tscn" id="9_note"]
+[ext_resource type="PackedScene" uid="uid://nj6shgfintl" path="res://ui/note_ui/note_ui_canvas.tscn" id="10_noteui"]
+[ext_resource type="Texture2D" uid="uid://gvv6asd26b86" path="res://assets/images/Atlas/character_idle_1.tres" id="10_ucpsp"]
+[ext_resource type="Texture2D" uid="uid://c3wruvv5cxdme" path="res://assets/images/Atlas/character_idle_2.tres" id="11_scfnr"]
+[ext_resource type="Texture2D" uid="uid://ddh5jg1i3tdr0" path="res://assets/images/Atlas/ui_dialogcloud_1.tres" id="12_jwfdk"]
+[ext_resource type="FontFile" uid="uid://bwhkqpe753hy1" path="res://assets/fonts/Zeequada/Zeequada-Regular.otf" id="13_kj25r"]
+[ext_resource type="Script" uid="uid://dclk6re7ks6ys" path="res://character/random_sfx.gd" id="14_oq748"]
+[ext_resource type="AudioStream" uid="uid://b8ciq8bkqo762" path="res://assets/sfx/вздох человечка.mp3" id="15_k3bby"]
+[ext_resource type="AudioStream" uid="uid://bnkwarehxw1ja" path="res://assets/sfx/вздох человечка 2.mp3" id="16_fu5p3"]
+[ext_resource type="AudioStream" uid="uid://ndo6haaha3oy" path="res://assets/sfx/кашель человечка 2.mp3" id="17_6e4ty"]
+[ext_resource type="AudioStream" uid="uid://bhovcnhsu0l2q" path="res://assets/sfx/кашель человечка.mp3" id="18_sw01i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqpty"]
 size = Vector2(205, 108.69531)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
+size = Vector2(132, 554)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qkjfd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5rfuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ucpsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_scfnr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rvpn"]
+size = Vector2(406, 110)
 
 [node name="Level4" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_ptmi2")
@@ -18,6 +54,7 @@ script = ExtResource("1_ptmi2")
 position = Vector2(960, 600)
 scale = Vector2(0.74999994, 0.75)
 texture = ExtResource("6_hlj1s")
+flip_h = true
 
 [node name="NoteArea2D" type="Area2D" parent="." unique_id=1757877577]
 position = Vector2(1239, 1016)
@@ -46,7 +83,87 @@ position = Vector2(17.55, 1.06)
 texture = ExtResource("6_jwckb")
 
 [node name="CarpetOpenedCollision" type="CollisionPolygon2D" parent="CarpetArea2D" unique_id=108179133]
+visible = false
 polygon = PackedVector2Array(-435, 115, -353, -118, 418, -110, 450, 16, 341, 113)
 
 [node name="CarpetOpenedSprite" type="Sprite2D" parent="CarpetArea2D" unique_id=647458373]
+visible = false
 texture = ExtResource("7_cj05o")
+
+[node name="Character" type="Node2D" parent="." unique_id=197201290]
+position = Vector2(1513, 781)
+scale = Vector2(-1.0000007, 1)
+script = ExtResource("8_ynuuj")
+
+[node name="CharacterBody2D" type="AnimatableBody2D" parent="Character" unique_id=688282596]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/CharacterBody2D" unique_id=569048953]
+position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_hx151")
+
+[node name="Placeholder" type="AnimatedSprite2D" parent="Character/CharacterBody2D" unique_id=991381985]
+position = Vector2(-3.999999, -5)
+scale = Vector2(0.912, 1)
+sprite_frames = SubResource("SpriteFrames_qkjfd")
+frame = 1
+frame_progress = 0.7879755
+
+[node name="PlayerMessageArea2D" type="Area2D" parent="Character" unique_id=1464497694]
+z_index = 30
+position = Vector2(391, 170)
+script = ExtResource("4_hlj1s")
+metadata/_custom_type_script = "uid://b7qr2cdibn3ep"
+
+[node name="Placeholder" type="Sprite2D" parent="Character/PlayerMessageArea2D" unique_id=1399531517]
+position = Vector2(-258.258, -332.75)
+scale = Vector2(1.4144813, 0.9624413)
+texture = ExtResource("12_jwfdk")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Character/PlayerMessageArea2D" unique_id=651305059]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.00015
+offset_top = -243.0
+offset_right = 251.99985
+offset_bottom = -146.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0000024, 1)
+pivot_offset_ratio = Vector2(0.495, 0.49)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("13_kj25r")
+theme_override_font_sizes/normal_font_size = 37
+text = "sdfsdfadsfasdffa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/PlayerMessageArea2D" unique_id=964252358]
+position = Vector2(40.999744, -199)
+shape = SubResource("RectangleShape2D_0rvpn")
+
+[node name="random_sfx" type="Node" parent="Character" unique_id=2039890576]
+script = ExtResource("14_oq748")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Character/random_sfx" unique_id=1542644813]
+stream = ExtResource("15_k3bby")
+volume_db = 4.139
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Character/random_sfx" unique_id=1558900883]
+stream = ExtResource("16_fu5p3")
+volume_db = 4.139
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="Character/random_sfx" unique_id=1121075467]
+stream = ExtResource("17_6e4ty")
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="Character/random_sfx" unique_id=1840945998]
+stream = ExtResource("18_sw01i")
+
+[node name="Note" parent="." unique_id=1552927014 instance=ExtResource("9_note")]
+position = Vector2(1134, 829)
+note_id = 3
+
+[node name="NoteUi" parent="." unique_id=701267839 instance=ExtResource("10_noteui")]

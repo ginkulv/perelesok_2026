@@ -7,6 +7,7 @@ extends Node2D
 var note_text: String = ""  # 👈 Объявляем переменную
 
 func _ready() -> void:
+	clickable_area.add_to_group("note_click")
 	clickable_area.item_clicked.connect(_on_click)
 	
 	# Получаем текст записки из MessageManager

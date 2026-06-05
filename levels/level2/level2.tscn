@@ -39,50 +39,6 @@ size = Vector2(109, 425)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlj67"]
 size = Vector2(99, 169)
 
-[sub_resource type="Animation" id="Animation_xcfw4"]
-resource_name = "level2"
-length = 30.166666
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Character")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2.0333333, 5.0333333, 7.9333334, 10.7, 13.666667, 16.733334, 20.166666, 23.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}, {
-"args": [],
-"method": &"talk"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdiim"]
-_data = {
-&"level2": SubResource("Animation_xcfw4")
-}
-
 [node name="Level2" type="Node2D" unique_id=1251460109]
 script = ExtResource("1_5x1h8")
 
@@ -106,6 +62,11 @@ texture = ExtResource("5_6moi3")
 position = Vector2(957, 292)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_pda5e")
+
+[node name="Kover1" type="Sprite2D" parent="RoomObjects" unique_id=359778195]
+position = Vector2(948.9078, 793.5)
+scale = Vector2(0.5204918, 0.52049184)
+texture = ExtResource("13_dufva")
 
 [node name="Stol" type="Sprite2D" parent="RoomObjects" unique_id=1689618180]
 position = Vector2(1341, 727)
@@ -148,11 +109,6 @@ metadata/_custom_type_script = "uid://b7qr2cdibn3ep"
 position = Vector2(1349, 656)
 shape = SubResource("RectangleShape2D_hqtow")
 
-[node name="Kover1" type="Sprite2D" parent="RoomObjects/Item/ClickableArea2D" unique_id=359778195]
-position = Vector2(948.9078, 793.5)
-scale = Vector2(0.5204918, 0.52049184)
-texture = ExtResource("13_dufva")
-
 [node name="Item2" type="Node2D" parent="RoomObjects" unique_id=1046047528]
 editor_description = "Предмет должн появится по шелчку мышкой"
 
@@ -174,12 +130,12 @@ editor_description = "Лампа должна включится по шелчк
 position = Vector2(16, -3)
 
 [node name="LampaOff" type="Sprite2D" parent="RoomObjects/Item3" unique_id=1553960224]
-visible = false
 position = Vector2(508.99997, 667)
 scale = Vector2(0.52, 0.52)
 texture = ExtResource("6_ho0tc")
 
 [node name="LampaOn" type="Sprite2D" parent="RoomObjects/Item3" unique_id=1416257349]
+visible = false
 position = Vector2(509.18747, 665.31305)
 scale = Vector2(0.5211614, 0.52116144)
 texture = ExtResource("16_ykrqb")
@@ -202,10 +158,9 @@ position = Vector2(1134, 829)
 note_id = 1
 
 [node name="KartinaPyle" type="Sprite2D" parent="." unique_id=1252074879]
-position = Vector2(961.5, 548.5)
-scale = Vector2(0.60455245, 0.6623775)
+position = Vector2(961.77936, 545.75006)
+scale = Vector2(0.6097381, 0.6657476)
 texture = ExtResource("14_pda5e")
-metadata/_edit_lock_ = true
 
 [node name="TrapochkaArea" type="Area2D" parent="." unique_id=1042978652]
 position = Vector2(1843, 209)
@@ -220,7 +175,3 @@ texture = ExtResource("15_1gyy6")
 shape = SubResource("RectangleShape2D_tlj67")
 
 [node name="NoteUi" parent="." unique_id=701267839 instance=ExtResource("16_evo2f")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1315689152]
-libraries/ = SubResource("AnimationLibrary_pdiim")
-autoplay = &"level2"
