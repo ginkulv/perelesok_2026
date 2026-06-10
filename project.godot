@@ -29,8 +29,9 @@ LevelManager="*uid://dhuv66v0f31tm"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=2837
+window/size/viewport_height=1599
+window/size/mode=3
 window/size/transparent=true
 window/stretch/mode="viewport"
 window/per_pixel_transparency/allowed=true
@@ -85,3 +86,5 @@ toggle_pause_menu={
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 viewport/transparent_background=true
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true

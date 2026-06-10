@@ -14,14 +14,14 @@ const DRAGGABLE_FRAGMENT_NAMES := [
 ]
 
 @onready var expected_pos = {
-	"JigsawFragment2": Vector2(766, 212),
-	"JigsawFragment3": Vector2(306, 198),
-	"JigsawFragment4": Vector2(1219, 832),
-	"JigsawFragment5": Vector2(1509, 383),
-	"JigsawFragment6": Vector2(790, 547),
-	"JigsawFragment7": Vector2(1390, 547),
-	"JigsawFragment8": Vector2(239, 668),
-	"JigsawFragment9": Vector2(496, 404),
+	"JigsawFragment2": Vector2(1156.0, 312.0),
+	"JigsawFragment3": Vector2(478.0, 291.0),
+	"JigsawFragment4": Vector2(1873.0, 1222.0),
+	"JigsawFragment5": Vector2(2327.0, 580.0),
+	"JigsawFragment6": Vector2(1205.0, 806.0),
+	"JigsawFragment7": Vector2(2126.0, 805.0),
+	"JigsawFragment8": Vector2(370.0, 988.0),
+	"JigsawFragment9": Vector2(756.0, 589.0),
 }
 
 var pieces_placed = 0
