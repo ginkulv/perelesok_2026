@@ -21,6 +21,7 @@
 script = ExtResource("1_c6lro")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1763599126]
+custom_minimum_size = Vector2(0.57, 0.105)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
